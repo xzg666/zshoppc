@@ -32,9 +32,6 @@ const handleLogin = () => {
   } else {
   }
 }
-onMounted(() => {
-  accountRef.value = $refs.paneAccount
-})
 </script>
 
 <style lang="scss" scoped></style>
