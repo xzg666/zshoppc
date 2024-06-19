@@ -3,7 +3,7 @@
     <el-card style="width: 300px">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="账号登录" name="account">
-          <PaneAccount ref="paneAccount" />
+          <PaneAccount ref="accountRef" />
         </el-tab-pane>
         <el-tab-pane label="手机号登录" name="phone"> </el-tab-pane>
       </el-tabs>
@@ -26,7 +26,7 @@ const accountRef = ref<InstanceType<typeof PaneAccount>>()
 
 const handleLogin = () => {
   if (activeName.value == 'account') {
-    console.log(accountRef)
+    console.log(accountRef.value)
 
     accountRef.value?.loginAction()
   } else {
