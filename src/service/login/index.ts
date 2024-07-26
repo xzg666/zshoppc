@@ -36,3 +36,17 @@ export function login(account: IAccount) {
     data: account
   })
 }
+
+export function getUserInfo(id: number) {
+  return hyRequest.get<IDateType>({
+    url: '/user/1',
+    showLoading: false
+  })
+}
+
+export function getPermission() {
+  return hyRequest.get<IDateType>({
+    url: '/permission',
+    showLoading: false
+  })
+}

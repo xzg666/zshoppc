@@ -21,9 +21,10 @@
 import { reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import type { FormRules, ElForm } from 'element-plus'
-import { login } from '@/service/login'
+
 import localCache from '@/utils/cache'
 import { useRouter } from 'vue-router'
+import useLoginStore from '@/stores/login/login'
 
 const form = reactive({
   account: 'xzg',
@@ -45,13 +46,16 @@ const codeUrl = ref<string>('api/login/code')
 
 const resetCode = () => (codeUrl.value = codeUrl.value + '?' + Math.random())
 
+const loginStore = useLoginStore()
+
 function loginAction() {
   formRef.value?.validate(async (valid) => {
     if (valid) {
-      const { data } = await login(form)
-      localCache.setCache('token', data.token)
-      router.push('/main')
-      console.log(form, data)
+      // const { data } = await login(form)
+      // localCache.setCache('token', data.token)
+      // router.push('/main')
+      // console.log(form, data)
+      loginStore.loginAccountAction(form).then(() => {})
     }
   })
 }

@@ -5,9 +5,9 @@ export interface IAccount {
 }
 
 export interface ILoginResult {
-  id: number
-  name: string
-  token: string
+  statusCode?: Number
+  message?: string
+  token?: string
 }
 
 export interface IDateType<T = any> {

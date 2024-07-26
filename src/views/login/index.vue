@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import LoginPanel from './coms/login-panel.vue'
+
 </script>
 
 <style lang="less" scoped>
