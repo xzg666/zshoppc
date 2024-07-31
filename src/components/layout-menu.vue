@@ -167,7 +167,6 @@ const handleMenuItemClick = (route: any, type: Number) => {
 .sub-menu {
   width: 130px;
   padding: 10px 0;
-  .is-active .el-menu-item,
   .is-active.el-menu-item {
     color: red;
     background: #fae7e8;
