@@ -32,7 +32,7 @@
             {{ smenu.name }}
           </el-menu-item>
 
-          <el-sub-menu index="1" v-else>
+          <el-sub-menu :index="smenu.url" v-else>
             <template #title>
               <span>{{ smenu.name }}</span>
             </template>

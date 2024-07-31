@@ -31,7 +31,7 @@ const useLoginStore = defineStore('login', {
 
       //1.拿token
       const loginRes = await login(account)
-      console.log(666, account, loginRes.data);
+      // console.log(666, account, loginRes.data);
       if (loginRes.data.statusCode == 403) {
         return ElMessage.error(loginRes.data.message)
       }
@@ -39,8 +39,9 @@ const useLoginStore = defineStore('login', {
 
       //2.获取用户信息
       const userInfoRes = await getUserInfo()
-      console.log('userInfoRes', userInfoRes);
+      // console.log('userInfoRes', userInfoRes);
       this.userInfo = userInfoRes.data
+
 
       //3.获取用户菜单
       const userMenusRes = await getUserMenus()
@@ -49,6 +50,9 @@ const useLoginStore = defineStore('login', {
 
       // 4.动态加路由
       const newRouter = mapMenusToRoute(this.userMenus)
+      // debugger
+      console.log('==========', router.getRoutes());
+
       newRouter.forEach(route => router.addRoute(route))
 
       ElMessage.success('登录成功')
@@ -56,15 +60,18 @@ const useLoginStore = defineStore('login', {
       //5.跳转
       router.push('/')
 
+
     },
     handleLogout() {
       this.token = null
+      this.userMenus = null
     },
     async loadLocalCacheAction() {
       if (this.token && this.userMenus.length) {
         //刷新重新请求用户菜单
 
         const newRouter = mapMenusToRoute(this.userMenus)
+        // debugger
         newRouter.forEach(route => router.addRoute(route))
       }
     }
