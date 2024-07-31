@@ -24,7 +24,7 @@ import type { FormRules, ElForm } from 'element-plus'
 
 import localCache from '@/utils/cache'
 import { useRouter } from 'vue-router'
-import useLoginStore from '@/stores/login/login'
+import { useLoginStore } from '@/stores/modules/index'
 
 const form = reactive({
   account: 'xzg',

@@ -12,6 +12,6 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   BASE_URL = 'http://coderwhy.org/test'
 }
-console.log(BASE_URL)
+// console.log(BASE_URL)
 
 export { BASE_URL, TIME_OUT }

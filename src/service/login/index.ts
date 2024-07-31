@@ -37,14 +37,14 @@ export function login(account: IAccount) {
   })
 }
 
-export function getUserInfo(id: number) {
+export function getUserInfo() {
   return hyRequest.get<IDateType>({
     url: '/user/1',
     showLoading: false
   })
 }
 
-export function getPermission() {
+export function getUserMenus() {
   return hyRequest.get<IDateType>({
     url: '/permission',
     showLoading: false
