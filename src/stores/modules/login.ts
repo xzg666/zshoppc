@@ -65,6 +65,7 @@ const useLoginStore = defineStore('login', {
     handleLogout() {
       this.token = null
       this.userMenus = null
+      location.reload()
     },
     async loadLocalCacheAction() {
       if (this.token && this.userMenus.length) {

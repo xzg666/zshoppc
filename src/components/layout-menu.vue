@@ -15,7 +15,7 @@
           :index="menu.url"
           @click="handleMenuItemClick(menu, 1)"
         >
-          {{ menu.name }}
+          {{ $t(`${menu.meta.title}`) }}
         </el-menu-item>
       </el-menu>
     </div>
@@ -29,12 +29,12 @@
             :index="smenu.url"
             @click="handleMenuItemClick(smenu, 2)"
           >
-            {{ smenu.name }}
+            {{ $t(`${smenu.meta.title}`) }}
           </el-menu-item>
 
           <el-sub-menu :index="smenu.url" v-else>
             <template #title>
-              <span>{{ smenu.name }}</span>
+              <span>{{ $t(`${smenu.meta.title}`) }}</span>
             </template>
             <el-menu-item
               v-for="cmenu in smenu.children"
@@ -42,7 +42,7 @@
               :key="cmenu.url"
               @click="handleMenuItemClick(cmenu, 3)"
             >
-              {{ cmenu.name }}
+              {{ $t(`${cmenu.meta.title}`) }}
             </el-menu-item>
           </el-sub-menu>
         </template>

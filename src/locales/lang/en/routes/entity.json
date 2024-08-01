@@ -1,0 +1,11 @@
+{
+  "entity": {
+    "index": "Entity",
+    "good": "Good",
+    "func": {
+      "index": "Func",
+      "category": "Category",
+      "tag": "Tag"
+    }
+  }
+}

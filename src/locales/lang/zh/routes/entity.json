@@ -1,0 +1,11 @@
+{
+  "entity": {
+    "index": "商品",
+    "good": "商品列表",
+    "func": {
+      "index": "功能",
+      "category": "分类",
+      "tag": "标签"
+    }
+  }
+}

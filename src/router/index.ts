@@ -19,8 +19,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  console.log('getRoutes', router.getRoutes(), to);
-  // debugger
+  // console.log('getRoutes', router.getRoutes(), to);
   if (to.path !== '/login' && !useLoginStore()?.token) {
     return '/login'
   }

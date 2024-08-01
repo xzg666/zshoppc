@@ -8,7 +8,9 @@
         <LayoutHead />
       </el-header>
       <el-main>
-        <router-view />
+        <div class="main-container">
+          <router-view />
+        </div>
       </el-main>
     </el-container>
   </el-container>
@@ -31,5 +33,9 @@ import LayoutHead from '@/components/layout-head.vue'
 }
 .el-main {
   background: #edf0f3;
+}
+.main-container {
+  background: #fff;
+  padding: 16px;
 }
 </style>

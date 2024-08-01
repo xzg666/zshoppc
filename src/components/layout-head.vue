@@ -1,7 +1,32 @@
 <template>
   <div class="layout-head">
     <div></div>
-    <div>
+    <div class="layout-head-right">
+      <!-- 语言 -->
+      <el-dropdown @command="handleLangClick" trigger="click">
+        <el-button text>
+          {{ $t('langSeeting.toggle')
+          }}<el-icon class="el-icon--right"><arrow-down /></el-icon>
+        </el-button>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item
+              v-for="lang in langList"
+              :key="lang.label"
+              :command="lang.label"
+              >{{ $t(`${lang.value}`) }}
+              <el-icon
+                v-if="i18n.locale.value == lang.label"
+                color="#409efc"
+                class="no-inherit"
+              >
+                <Check />
+              </el-icon>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+      <!-- 功能 -->
       <el-popover placement="bottom" :width="200" trigger="hover">
         <template #reference>
           <img v-if="avatar" :src="avatar" class="avatar" />
@@ -28,11 +53,19 @@
 </template>
 
 <script setup lang="ts">
-import { useLoginStore } from '@/stores/modules/index'
-import { useRouter } from 'vue-router'
+import { useLoginStore, useLangStore } from '@/stores/modules/index'
+import { ElLoading } from 'element-plus'
+import { reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const i18n = useI18n()
 
 const loginStore = useLoginStore()
-const router = useRouter()
+
+const langList = reactive([
+  { label: 'zh', value: 'langSeeting.chinese' },
+  { label: 'en', value: 'langSeeting.english' }
+])
 
 const {
   userInfo: { avatar, name }
@@ -40,7 +73,18 @@ const {
 
 const handleLogout = () => {
   loginStore.handleLogout()
-  location.reload()
+}
+
+const handleLangClick = (command: string) => {
+  const loading = ElLoading.service({
+    lock: true,
+    text: '切换语言中...',
+    background: 'rgba(0,0,0,0.5)'
+  })
+
+  useLangStore()?.langToogleAction(command)
+  i18n.locale.value = command
+  loading?.close()
 }
 </script>
 
@@ -51,6 +95,10 @@ const handleLogout = () => {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  &-right {
+    display: flex;
+    align-items: center;
+  }
 }
 .default-avatar {
   font-size: 22px;
@@ -95,5 +143,21 @@ const handleLogout = () => {
     padding-top: 10px;
     cursor: pointer;
   }
+}
+.example-showcase .el-dropdown-link {
+  cursor: pointer;
+  color: var(--el-color-primary);
+  display: flex;
+  align-items: center;
+}
+.el-dropdown-link {
+  display: flex;
+}
+
+.el-dropdown-link:focus {
+  border: none !important;
+}
+.no-inherit {
+  margin-left: 6px;
 }
 </style>
