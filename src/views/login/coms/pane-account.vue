@@ -25,6 +25,7 @@ import type { FormRules, ElForm } from 'element-plus'
 import localCache from '@/utils/cache'
 import { useRouter } from 'vue-router'
 import { useLoginStore } from '@/stores/modules/index'
+import { useI18n } from 'vue-i18n'
 
 const form = reactive({
   account: 'xzg',
@@ -33,11 +34,11 @@ const form = reactive({
 })
 
 const router = useRouter()
-
+const { t } = useI18n()
 const rules = reactive({
   account: [{ required: true, message: '请输入账号', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-  code: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
+  code: [{ required: true, message: t('Credits'), trigger: 'blur' }]
 })
 
 const formRef = ref<InstanceType<typeof ElForm>>()

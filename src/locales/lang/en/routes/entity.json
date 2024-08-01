@@ -3,7 +3,7 @@
     "index": "Entity",
     "good": "Good",
     "func": {
-      "index": "Func",
+      "index": "Function",
       "category": "Category",
       "tag": "Tag"
     }

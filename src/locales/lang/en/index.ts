@@ -12,6 +12,9 @@ for (const key in files) {
   Object.assign(routes, { ...module.default })
 }
 
+console.log('=========', routes);
+
+
 const en = {
   test: 'test',
   Credits: 'Credits',
