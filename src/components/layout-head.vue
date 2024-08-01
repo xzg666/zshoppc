@@ -1,6 +1,6 @@
 <template>
   <div class="layout-head">
-    <div>bread</div>
+    <div></div>
     <div>
       <el-popover placement="bottom" :width="200" trigger="hover">
         <template #reference>
@@ -93,6 +93,7 @@ const handleLogout = () => {
     color: #999;
     font-size: 14px;
     padding-top: 10px;
+    cursor: pointer;
   }
 }
 </style>
