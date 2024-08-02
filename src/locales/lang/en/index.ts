@@ -1,19 +1,13 @@
+import { getAllPageLang } from '@/utils/menu'
 
 const files: Record<string, any> = import.meta.glob(
-  './routes/*.json',
+  './src/**/*.json',
   {
     eager: true
   }
 )
-const routes = {}
 
-for (const key in files) {
-  const module = files[key]
-  Object.assign(routes, { ...module.default })
-}
-
-console.log('=========', routes);
-
+const AllPageLang = getAllPageLang(files)
 
 const en = {
   test: 'test',
@@ -23,6 +17,7 @@ const en = {
     chinese: 'Chinese',
     english: 'English'
   },
-  routes
+  ...AllPageLang
 }
+
 export default en

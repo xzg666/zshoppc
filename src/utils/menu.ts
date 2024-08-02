@@ -107,3 +107,25 @@ export function mapPathToMenu(path: string, userMenus: any[]) {
     //主菜单，子菜单，主菜单索引
     return [mainMenu, path, mainMenuIndex]
 }
+
+export function getAllPageLang(files: Record<string, any>) {
+    const langObj: { [key: string]: any } = {}
+
+    for (const key in files) {
+        const module = files[key]
+        let pathArr = key.replace('.json', '').split('/')
+        let validPath = pathArr.slice(2,
+            pathArr[pathArr.length - 1].includes('index') ? (pathArr.length - 1) : pathArr.length
+        )
+        let langObjKey = validPath.map((item, idx) => {
+            if (idx > 0) {
+                return item.charAt(0).toUpperCase() + item.slice(1)
+            }
+            return item
+        }).join('')
+        langObj[langObjKey] = module.default
+    }
+
+    return langObj
+
+}

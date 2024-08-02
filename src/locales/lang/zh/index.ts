@@ -1,17 +1,13 @@
+import { getAllPageLang } from '@/utils/menu'
+
 const files: Record<string, any> = import.meta.glob(
-  './routes/*.json',
+  './src/**/*.json',
   {
     eager: true
   }
 )
-const routes = {}
 
-for (const key in files) {
-  const module = files[key]
-  Object.assign(routes, { ...module.default })
-}
-
-
+const AllPageLang = getAllPageLang(files)
 
 const zh = {
   test: '测试',
@@ -21,6 +17,6 @@ const zh = {
     chinese: '简体中文',
     english: '英文'
   },
-  routes
+  ...AllPageLang
 }
 export default zh

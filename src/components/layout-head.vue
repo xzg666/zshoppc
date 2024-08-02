@@ -3,7 +3,7 @@
     <div></div>
     <div class="layout-head-right">
       <!-- 语言 -->
-      <el-dropdown @command="handleLangClick" trigger="click">
+      <el-dropdown @command="handleLangClick" trigger="hover">
         <el-button text>
           {{ $t('langSeeting.toggle')
           }}<el-icon class="el-icon--right"><arrow-down /></el-icon>

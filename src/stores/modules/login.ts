@@ -31,7 +31,6 @@ const useLoginStore = defineStore('login', {
 
       //1.拿token
       const loginRes = await login(account)
-      // console.log(666, account, loginRes.data);
       if (loginRes.data.statusCode == 403) {
         return ElMessage.error(loginRes.data.message)
       }
@@ -50,8 +49,6 @@ const useLoginStore = defineStore('login', {
 
       // 4.动态加路由
       const newRouter = mapMenusToRoute(this.userMenus)
-      // debugger
-      console.log('==========', router.getRoutes());
 
       newRouter.forEach(route => router.addRoute(route))
 
