@@ -4,7 +4,7 @@ import en from './lang/en/index.ts' // 引入en.js 模块
 
 export const getCurrLang = () => {
   // const localLang = navigator.language.split('-')[0]; // 浏览器语言
-  const { lang } = JSON.parse(localStorage.getItem('lang')) // 本地存储语言
+  const { lang } = JSON.parse(localStorage.getItem('lang') ?? '{}') // 本地存储语言
   return lang || 'zh'
 }
 

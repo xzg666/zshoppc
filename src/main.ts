@@ -8,7 +8,7 @@ import App from './App.vue'
 import router from './router'
 
 
-import i18n from "@/locales/index";
+import i18n from "@/locales/index.ts";
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
