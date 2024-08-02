@@ -1,6 +1,5 @@
 <template>
   <el-button @click="handleToggleLange">dashbord</el-button>
-  {{ $t('test') }}
 </template>
 
 <script setup lang="ts">

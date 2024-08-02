@@ -1,6 +1,10 @@
 import { createI18n } from 'vue-i18n' // 引入vue-i18n组件
-import zh from './lang/zh/index.ts' // 引入zh.js 模块
-import en from './lang/en/index.ts' // 引入en.js 模块
+//router
+import routerLang from './lang/router.json'
+
+// 其他的使用插件库加du-i18n、i18n Ally
+import pluginLang from '../message/index.ts'
+
 
 export const getCurrLang = () => {
   // const localLang = navigator.language.split('-')[0]; // 浏览器语言
@@ -14,8 +18,9 @@ const i18n = createI18n({
   locale: getCurrLang(), // 语言标识
   fallbackLocale: 'zh', //没有英文的时候默认中文语言
   messages: {
-    zh,
-    en
+    zh: { ...routerLang.zh, ...pluginLang.zh },
+    en: { ...routerLang.en, ...pluginLang.en }
   }
 })
 export default i18n
+

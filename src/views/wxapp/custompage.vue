@@ -1,5 +1,5 @@
 <template>
-  <el-button>自定义页面</el-button>
+  <el-button>{{ $t('wxapp.custompage.757449-0') }}</el-button>
 </template>
 
 <script setup lang="ts"></script>

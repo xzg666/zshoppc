@@ -2,10 +2,10 @@
   <div class="layout-head">
     <div></div>
     <div class="layout-head-right">
-      <!-- 语言 -->
+      <!-- {{ $t('components.layout-head.228891-0') }} -->
       <el-dropdown @command="handleLangClick" trigger="hover">
         <el-button text>
-          {{ $t('langSeeting.toggle')
+          {{ $t('components.layout-head.228891-0')
           }}<el-icon class="el-icon--right"><arrow-down /></el-icon>
         </el-button>
         <template #dropdown>
@@ -14,7 +14,7 @@
               v-for="lang in langList"
               :key="lang.label"
               :command="lang.label"
-              >{{ $t(`${lang.value}`) }}
+              >{{ lang.value }}
               <el-icon
                 v-if="i18n.locale.value == lang.label"
                 color="#409efc"
@@ -42,10 +42,14 @@
             </el-icon>
             <div class="func-right">
               <div>{{ name }}</div>
-              <div class="func-right-info">账号信息</div>
+              <div class="func-right-info">
+                {{ $t('components.layout-head.228891-1') }}
+              </div>
             </div>
           </div>
-          <div class="logout-txt" @click="handleLogout">退出登录</div>
+          <div class="logout-txt" @click="handleLogout">
+            {{ $t('components.layout-head.228891-2') }}
+          </div>
         </div>
       </el-popover>
     </div>
@@ -55,16 +59,17 @@
 <script setup lang="ts">
 import { useLoginStore, useLangStore } from '@/stores/modules/index'
 import { ElLoading } from 'element-plus'
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const i18n = useI18n()
+const { t } = i18n
 
 const loginStore = useLoginStore()
 
-const langList = reactive([
-  { label: 'zh', value: 'langSeeting.chinese' },
-  { label: 'en', value: 'langSeeting.english' }
+const langList = computed(() => [
+  { label: 'zh', value: t('components.layout-head.228891-3') },
+  { label: 'en', value: t('components.layout-head.228891-4') }
 ])
 
 const {
@@ -78,7 +83,7 @@ const handleLogout = () => {
 const handleLangClick = (command: string) => {
   const loading = ElLoading.service({
     lock: true,
-    text: '切换语言中...',
+    text: i18n.t('components.layout-head.228891-5'),
     background: 'rgba(0,0,0,0.5)'
   })
 

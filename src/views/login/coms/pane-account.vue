@@ -1,13 +1,17 @@
 <template>
   <div>
-    <el-form :model="form" :rules="rules" ref="formRef" label-width="80">
-      <el-form-item label="账号" prop="account">
+    <el-form :model="form" :rules="rules" ref="formRef" label-width="100">
+      <el-form-item :label="t('coms.pane-account.076228-0')" prop="account">
         <el-input v-model="form.account" />
       </el-form-item>
-      <el-form-item label="密码" type="password" prop="password">
+      <el-form-item
+        :label="t('coms.pane-account.076228-1')"
+        type="password"
+        prop="password"
+      >
         <el-input v-model="form.password" />
       </el-form-item>
-      <el-form-item label="验证码" prop="code">
+      <el-form-item :label="t('coms.pane-account.076228-2')" prop="code">
         <div class="code-box">
           <el-input v-model="form.code" />
           <img @click="resetCode" :src="codeUrl" alt="" />
@@ -36,9 +40,27 @@ const form = reactive({
 const router = useRouter()
 const { t } = useI18n()
 const rules = reactive({
-  account: [{ required: true, message: '请输入账号', trigger: 'blur' }],
-  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-  code: [{ required: true, message: t('Credits'), trigger: 'blur' }]
+  account: [
+    {
+      required: true,
+      message: t('coms.pane-account.076228-3'),
+      trigger: 'blur'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      message: t('coms.pane-account.076228-4'),
+      trigger: 'blur'
+    }
+  ],
+  code: [
+    {
+      required: true,
+      message: t('coms.pane-account.076228-5'),
+      trigger: 'blur'
+    }
+  ]
 })
 
 const formRef = ref<InstanceType<typeof ElForm>>()

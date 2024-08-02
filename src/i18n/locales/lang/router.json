@@ -1,0 +1,28 @@
+{
+  "zh": {
+    "dashbord": "概括",
+
+    "entity": "商品",
+    "entityGood": "商品列表",
+    "entityFunc": "功能",
+    "entityFuncCategory": "分类",
+    "entityFuncTag": "标签",
+
+    "wxapp": "装修",
+    "wxappTemplate": "首页模板",
+    "wxappCustompage": "自定义页面"
+  },
+  "en": {
+    "dashbord": "Dashbord",
+
+    "entity": "Entity",
+    "entityGood": "Good",
+    "entityFunc": "Func",
+    "entityFuncCategory": "Category",
+    "entityFuncTag": "Tag",
+
+    "wxapp": "Wxapp",
+    "wxappTemplate": "Template",
+    "wxappCustompage": "Custompage"
+  }
+}

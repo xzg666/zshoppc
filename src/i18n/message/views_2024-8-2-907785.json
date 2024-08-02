@@ -1,0 +1,18 @@
+{
+  "zh": {
+    "coms.pane-account.076228-0": "账号",
+    "coms.pane-account.076228-1": "密码",
+    "coms.pane-account.076228-2": "验证码",
+    "coms.pane-account.076228-3": "请输入账号",
+    "coms.pane-account.076228-4": "请输入密码",
+    "coms.pane-account.076228-5": "请输入验证码"
+  },
+  "en": {
+    "coms.pane-account.076228-0": "Account",
+    "coms.pane-account.076228-1": "Password",
+    "coms.pane-account.076228-2": "Code",
+    "coms.pane-account.076228-3": "Please enter your account",
+    "coms.pane-account.076228-4": "Please input a password",
+    "coms.pane-account.076228-5": "Please enter the verification code"
+  }
+}
