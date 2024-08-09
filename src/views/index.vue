@@ -17,8 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import LayoutMenu from '@/components/layout-menu.vue'
-import LayoutHead from '@/components/layout-head.vue'
+import LayoutMenu from '@/components/layout-menu/index.vue'
+import LayoutHead from '@/components/layout-head/index.vue'
 </script>
 <style lang="less" scoped>
 .common-layout {

@@ -1,0 +1,30 @@
+{
+  "zh": {
+    "config.page-search.262573-0": "请输入id",
+    "config.page-search.262573-1": "用户名",
+    "config.page-search.262573-2": "请输入用户名",
+    "config.page-search.262573-3": "密码",
+    "config.page-search.262573-4": "请输入密码",
+    "config.page-search.262573-5": "喜欢的运动",
+    "config.page-search.262573-6": "请选择喜欢的运动",
+    "config.page-search.262573-7": "篮球",
+    "config.page-search.262573-8": "排球",
+    "config.page-search.262573-9": "创建时间",
+    "config.page-search.262573-10": "开始时间",
+    "config.page-search.262573-11": "结束时间"
+  },
+  "en": {
+    "config.page-search.262573-0": "Please enter the ID",
+    "config.page-search.262573-1": "user name",
+    "config.page-search.262573-2": "enter one user name",
+    "config.page-search.262573-3": "password",
+    "config.page-search.262573-4": "Please input a password",
+    "config.page-search.262573-5": "Favorite sports",
+    "config.page-search.262573-6": "Please choose your favorite sport",
+    "config.page-search.262573-7": "Basketball",
+    "config.page-search.262573-8": "Volleyball",
+    "config.page-search.262573-9": "Creation time",
+    "config.page-search.262573-10": "start time",
+    "config.page-search.262573-11": "End time"
+  }
+}

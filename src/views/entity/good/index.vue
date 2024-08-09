@@ -3,6 +3,7 @@
     <div v-if="!route.path.includes('/editor')">
       <el-button @click="handleEdit">商品列表</el-button>
     </div>
+
     <router-view />
   </div>
 </template>

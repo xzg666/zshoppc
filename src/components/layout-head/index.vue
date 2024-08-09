@@ -90,6 +90,7 @@ const handleLangClick = (command: string) => {
   useLangStore()?.langToogleAction(command)
   i18n.locale.value = command
   loading?.close()
+  location.reload() //重置elementplus的语言包
 }
 </script>
 

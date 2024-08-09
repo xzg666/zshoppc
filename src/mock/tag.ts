@@ -1,0 +1,1 @@
+export const tagList = [{ id: 1, name: '新品', bcColor: 'primary' }, { id: 2, name: '爆品', bcColor: 'success' }]

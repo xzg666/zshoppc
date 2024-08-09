@@ -17,7 +17,7 @@ export default {
         {
             path: 'func/category',
             name: '分类',
-            component: () => import('@/views/entity/func/category.vue')
+            component: () => import('@/views/entity/func/category/index.vue')
         },
         {
             path: 'func/tag',

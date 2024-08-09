@@ -1,0 +1,16 @@
+export const goodList = [
+    {
+        name: 'iphone 15', price: '99900', desc: '行啊很对胃口的卡我觉得今晚决定', updateTime: 1723020707, tag: [{ id: 1, name: '新品', bcColor: 'primary' }, { id: 2, name: '爆品', bcColor: 'primary' }], img: 'https://pic.rmb.bdstatic.com/bjh/06ebf608f5153591dd09a32ad0d090267778.jpeg?x-bce-process=image/watermark,bucket_baidu-rmb-video-cover-1,image_YmpoL25ld3MvNjUzZjZkMjRlMDJiNjdjZWU1NzEzODg0MDNhYTQ0YzQucG5n,type_RlpMYW5UaW5nSGVpU01HQg==,w_22,text_QGNrcGVuZzA4,size_22,x_17,y_17,interval_2,color_FFFFFF,effect_softoutline,shc_000000,blr_2,align_1',
+        id: 1
+    },
+    { name: 'iphone 15 plus', price: '199900', updateTime: 1723020707, tag: [{ id: 1, name: '新品', bcColor: 'primary' }, { id: 2, name: '爆品', bcColor: 'success' }], desc: '行啊很对胃口的卡我觉得今晚决定', img: 'https://imgservice.suning.cn/uimg1/b2c/image/WH52LKtVD-tfd4iwA1pVOg.jpg_800w_800h_4e', id: 2 },
+    { name: 'iphone 15 pro', price: '96900', updateTime: 1723020707, tag: [], desc: '行啊很对胃口的卡我觉得今晚决定', img: 'https://imgservice.suning.cn/uimg1/b2c/image/3yv_apDPz_SkFOy27A_sSw.jpg_800w_800h_4e', id: 3 },
+    { name: 'iphone 15 promax', price: '299900', updateTime: 1723020707, tag: [{ id: 2, name: '爆品', bcColor: 'success' }], desc: '行啊很对胃口的卡我觉得今晚决定', img: 'http://img1.baidu.com/it/u=461319640,116108107&fm=253&app=138&f=JPEG?w=800&h=1069', id: 4 },
+    { name: 'xiaomi 14', price: '399900', updateTime: 1723020707, tag: [{ id: 1, name: '新品', bcColor: 'primary' }, { id: 2, name: '爆品', bcColor: 'success' }], desc: '行啊很对胃口的卡我觉得今晚决定', img: 'https://pic.rmb.bdstatic.com/bjh/news/5d29d78fb77c5f8d8f3840a88d168e9e.jpeg', id: 5 },
+    { name: 'xiaomi 14 pro', price: '499900', updateTime: 1723020707, tag: [{ id: 1, name: '新品', bcColor: 'primary' }], desc: '行啊很对胃口的卡我觉得今晚决定', img: 'https://pic.rmb.bdstatic.com/bjh/news/7720a1cc6f39c2a4af8caf5f6759ff69.png', id: 6 },
+    { name: 'xiaomi 14 ultra', price: '299900', updateTime: 1723020707, tag: [{ id: 1, name: '新品', bcColor: 'primary' }, { id: 2, name: '爆品', bcColor: 'success' }], desc: '行啊很对胃口的卡我觉得今晚决定', img: 'https://q9.itc.cn/images01/20240222/c1b798d148c14d1ba9ff481c4271a791.png', id: 7 },
+    { name: '华为 mate60', price: '9900', updateTime: 1723020707, tag: [{ id: 2, name: '爆品', bcColor: 'success' }], desc: '行啊很对胃口的卡我觉得今晚决定', img: 'https://img0.baidu.com/it/u=1781101948,3707104659&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=681', id: 8 },
+    { name: '华为 mate60 pro', price: '99960', updateTime: 1723020707, tag: [{ id: 1, name: '新品', bcColor: 'primary' }], desc: '行啊很对胃口的卡我觉得今晚决定', img: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.alicdn.com%2Fi2%2F2838892713%2FO1CN01Hz458g1VubOmFonaX_%21%212838892713.jpg&refer=http%3A%2F%2Fimg.alicdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1725621626&t=aa5dad6e87535246cffdb16784946c4a', id: 9 },
+    { name: '华为 mate60 pro+', price: '199900', updateTime: 1723020707, tag: [], desc: '行啊很对胃口的卡我觉得今晚决定', img: 'https://imgservice.suning.cn/uimg1/b2c/image/sN-mqEGeYI9N5PgWEsOH4w.png_800w_800h_4e', id: 10 },
+    { name: 'vivo x100s', price: '99909', updateTime: 1723020707, tag: [{ id: 1, name: '新品', bcColor: 'primary' }, { id: 2, name: '爆品', bcColor: 'success' }], desc: '行啊很对胃口的卡我觉得今晚决定', img: 'https://ecmb.bdimg.com/tam-ogel/1949976875_159941685_722_428.jpg', id: 11 },
+]

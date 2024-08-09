@@ -7,12 +7,12 @@ export default {
         {
             path: 'template',
             name: '首页模板',
-            component: () => import('@/views/wxapp/template.vue')
+            component: () => import('@/views/wxapp/template/index.vue')
         },
         {
             path: 'custompage',
             name: '自定义页面',
-            component: () => import('@/views/wxapp/custompage.vue')
+            component: () => import('@/views/wxapp/custompage/index.vue')
         }
     ]
 }
