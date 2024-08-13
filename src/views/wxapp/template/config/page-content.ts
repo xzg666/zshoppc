@@ -10,7 +10,8 @@ export const contentTableConfig = {
         {
             prop: 'name',
             label: '菜单名称',
-            minWidth: '120'
+            minWidth: '120',
+
         },
         {
             prop: 'url',

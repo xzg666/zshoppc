@@ -17,12 +17,16 @@
       <el-table-column
         v-if="showIndexColumn"
         type="index"
-        label="序号"
+        :label="$t('src.table.043838-0')"
         align="center"
         width="80"
       ></el-table-column>
       <template v-for="propItem in propList" :key="propItem.prop">
-        <el-table-column v-bind="propItem" align="center" show-overflow-tooltip>
+        <el-table-column
+          v-bind="propItem"
+          align="center"
+          :show-overflow-tooltip="propItem.tooltip"
+        >
           <template #default="scope">
             <slot :name="propItem.slotName" :row="scope.row">
               {{ scope.row[propItem.prop] }}

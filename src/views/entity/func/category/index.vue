@@ -5,9 +5,15 @@
     @resetBtnClick="resetBtnClick"
   ></pageSearch>
   <div class="action-box">
-    <el-button @click="handleAddClick">新增</el-button>
+    <el-button @click="handleAddClick">{{
+      $t('category.index.363177-0')
+    }}</el-button>
   </div>
-  <pageContent ref="pageContentRef" :contentTableConfig="contentTableConfig">
+  <pageContent
+    ref="pageContentRef"
+    :contentTableConfig="contentTableConfig"
+    @selectionChange="selectionChange"
+  >
     <template #price="scope">
       {{ '¥' + (scope.row.price / 100).toFixed(2) }}
     </template>
@@ -18,14 +24,14 @@
           size="mini"
           type="text"
           @click="handleEditClick(scope.row)"
-          >编辑</el-button
+          >{{ $t('category.index.363177-1') }}</el-button
         >
         <el-button
           icon="delete"
           size="mini"
           type="text"
           @click="handleDeleteClick"
-          >删除</el-button
+          >{{ $t('category.index.363177-2') }}</el-button
         >
       </div>
     </template>
@@ -69,15 +75,31 @@ import { usePageSearch } from '@/hooks'
 import { ref } from 'vue'
 import axios from 'axios'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import dayjs from 'dayjs'
 
-const [pageContentRef, queryBtnClick, resetBtnClick] = usePageSearch()
+import i18n from '@/i18n'
+const { t } = i18n.global
+
+const [pageContentRef, queryBtnClick, resetBtnClick] = usePageSearch(
+  //搜索参数处理
+  (query) => {
+    const { createTime } = query
+    return {
+      ...query,
+      createTime: [
+        dayjs(createTime[0]).valueOf() / 1000,
+        dayjs(createTime[1]).valueOf() / 1000
+      ]
+    }
+  }
+)
 
 const pageModalRef = ref<InstanceType<typeof pageModal>>()
 const defaultModalVal = ref({})
 
 const handleEditClick = (item: any) => {
   pageModalRef.value && (pageModalRef.value.dialogVisible = true)
-  modalConfig.title = '编辑'
+  modalConfig.title = t('category.index.363177-1')
   defaultModalVal.value = {
     ...item,
     tag: item.tag.map((item: any) => item.id),
@@ -87,7 +109,7 @@ const handleEditClick = (item: any) => {
 
 const handleAddClick = () => {
   pageModalRef.value && (pageModalRef.value.dialogVisible = true)
-  modalConfig.title = '新增'
+  modalConfig.title = t('category.index.363177-0')
   defaultModalVal.value = {}
 }
 
@@ -95,18 +117,19 @@ const handleModalConfirm = (val: any) => {
   console.log(val)
   //TODO 请求
   pageContentRef?.value?.getDataList()
+  pageModalRef.value && (pageModalRef.value.dialogVisible = false)
 }
 
 const handleDeleteClick = () => {
-  ElMessageBox.confirm('是否删除?', 'Warning', {
-    confirmButtonText: '确认',
-    cancelButtonText: '取消',
+  ElMessageBox.confirm(t('category.index.363177-3'), 'Warning', {
+    confirmButtonText: t('category.index.363177-4'),
+    cancelButtonText: t('category.index.363177-5'),
     type: 'warning'
   })
     .then(() => {
       ElMessage({
         type: 'success',
-        message: '删除成功'
+        message: t('category.index.363177-6')
       })
       //TODO请求
       pageContentRef?.value?.getDataList()
@@ -114,9 +137,13 @@ const handleDeleteClick = () => {
     .catch(() => {
       ElMessage({
         type: 'info',
-        message: '删除取消'
+        message: t('category.index.363177-7')
       })
     })
+}
+
+const selectionChange = (val: any) => {
+  console.log(val)
 }
 
 const getTagList = () => {

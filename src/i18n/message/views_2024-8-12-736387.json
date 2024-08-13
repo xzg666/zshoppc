@@ -1,0 +1,22 @@
+{
+	"zh": {
+		"category.index.363177-0": "新增",
+		"category.index.363177-1": "编辑",
+		"category.index.363177-2": "删除",
+		"category.index.363177-3": "是否删除?",
+		"category.index.363177-4": "确认",
+		"category.index.363177-5": "取消",
+		"category.index.363177-6": "删除成功",
+		"category.index.363177-7": "删除取消"
+	},
+	"en": {
+		"category.index.363177-0": "newly added",
+		"category.index.363177-1": "edit",
+		"category.index.363177-2": "delete",
+		"category.index.363177-3": "Delete?",
+		"category.index.363177-4": "confirm",
+		"category.index.363177-5": "cancel",
+		"category.index.363177-6": "Delete successfully",
+		"category.index.363177-7": "Delete Cancel"
+	}
+}

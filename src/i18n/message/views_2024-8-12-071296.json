@@ -1,0 +1,20 @@
+{
+  "zh": {
+    "config.page-content.711952-0": "商品名称",
+    "config.page-content.711952-1": "图片",
+    "config.page-content.711952-2": "价格",
+    "config.page-content.711952-3": "标签",
+    "config.page-content.711952-4": "描述",
+    "config.page-content.711952-5": "更新时间",
+    "config.page-content.711952-6": "操作"
+  },
+  "en": {
+    "config.page-content.711952-0": "Product Name",
+    "config.page-content.711952-1": "picture",
+    "config.page-content.711952-2": "Price",
+    "config.page-content.711952-3": "label",
+    "config.page-content.711952-4": "describe",
+    "config.page-content.711952-5": "Update time",
+    "config.page-content.711952-6": "operation"
+  }
+}

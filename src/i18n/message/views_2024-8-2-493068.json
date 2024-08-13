@@ -2,11 +2,13 @@
   "zh": {
     "coms.login-panel.929736-0": "账号登录",
     "coms.login-panel.929736-1": "手机号登录",
-    "coms.login-panel.929736-2": "登录"
+    "coms.login-panel.929736-2": "登录",
+    "wxapp.custompage.757449-0": "自定义页面"
   },
   "en": {
     "coms.login-panel.929736-0": "Account login",
     "coms.login-panel.929736-1": "Login with phone number",
-    "coms.login-panel.929736-2": "Sign in"
+    "coms.login-panel.929736-2": "Sign in",
+    "wxapp.custompage.757449-0": "Customize page"
   }
 }

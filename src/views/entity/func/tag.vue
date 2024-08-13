@@ -67,7 +67,7 @@ export default defineComponent({
     return () => {
       return (
         <div>
-          <ElButton>商品标签123</ElButton>
+          <ElButton>商品标签</ElButton>
           <el-table data={dataList} border style="width: 100%">
             {propList.map((propItem) => {
               return (

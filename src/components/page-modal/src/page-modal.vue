@@ -11,7 +11,10 @@
         <template #footer>
           <div class="dialog-footer">
             <el-button @click="handleModalCancle">取消</el-button>
-            <el-button type="primary" @click="handleModalConfirm"
+            <el-button
+              type="primary"
+              @click="handleModalConfirm"
+              :loading="confirmBtnLoading"
               >确定</el-button
             >
           </div>
@@ -37,8 +40,10 @@ const props = defineProps({
 })
 
 const dialogVisible = ref(false)
+const confirmBtnLoading = ref(false)
 defineExpose({
-  dialogVisible
+  dialogVisible,
+  confirmBtnLoading
 })
 
 const formData = ref({})
@@ -52,8 +57,10 @@ const handleModalCancle = () => {
 const emit = defineEmits(['confirm'])
 
 const handleModalConfirm = () => {
-  formRef.value.validate((res: any) => {
+  console.log(123, formRef.value.validate())
+  formRef.value.validate().then((res: any) => {
     if (res) {
+      confirmBtnLoading.value = true
       emit('confirm', { ...formData.value })
     }
   })

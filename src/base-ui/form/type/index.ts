@@ -2,10 +2,11 @@
 type IFormType = 'input' | 'password' | 'select' | 'datepicker' | 'input-number'
 export interface IFormItem {
     field: string
-    type: IFormType
+    type?: IFormType
     label: string
     rules?: any[]
     placeholder: string
+    multiple?: Boolean
     required?: Boolean
     message?: string
     validator?: any
@@ -21,8 +22,11 @@ export interface IFormItem {
     //       callback()
     //     }
     //   }
+    fixed?: string
     // 对于select
     options?: any[]
+    component?: any
+    componentProps?: any
     // 其他
     otherOptions?: any
 
@@ -35,6 +39,7 @@ export interface IForm {
     colLayout?: Object
     showSelectColumn?: Boolean
     showIndexColumn?: Boolean
+
 }
 
 

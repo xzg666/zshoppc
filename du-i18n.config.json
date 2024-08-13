@@ -1,5 +1,5 @@
 {
-  "quoteKeys": ["t", "i18n.t"],
+  "quoteKeys": ["$t", "t"],
   "defaultLang": "zh",
   "tempLangs": ["zh", "en"],
   "langPaths": "**/src/i18n/locale/**",

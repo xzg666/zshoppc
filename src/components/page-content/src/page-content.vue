@@ -6,6 +6,7 @@
       v-bind="contentTableConfig"
       v-model:page="pageInfo"
       :loading="loading"
+      @selectionChange="selectionChange"
     >
       <template #updateTime="scope">
         {{ $filters.formatTime(scope.row.updateTime * 1000) }}
@@ -81,8 +82,11 @@ const otherPropSlot = props?.contentTableConfig?.propList.filter(
     return !['updateTime'].includes(item.slotName)
   }
 )
+const emit = defineEmits(['selectionChange'])
 
-console.log('-=-=-=-=', otherPropSlot)
+const selectionChange = (val: any) => {
+  emit('selectionChange', val)
+}
 </script>
 
 <style scoped>

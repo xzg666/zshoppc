@@ -13,7 +13,6 @@ Mock.mock('/mockapi/good', 'get', (options: any) => {
     // 从查询参数中提取 page_size 和 page_no  
     let body = JSON.parse(options.body)
     const { page_size, page_no } = body || {};
-    console.log(page_size, page_no);
 
     // 根据查询参数处理数据（这里只是简单地返回所有数据）  
     // 在实际应用中，你可能需要根据 page_size 和 page_no 来分页数据  
@@ -118,7 +117,6 @@ Mock.mock('/mockapi/category', 'get', (options: any) => {
     // 从查询参数中提取 page_size 和 page_no  
     let body = JSON.parse(options.body)
     const { page_size, page_no } = body || {};
-    console.log(page_size, page_no);
 
     // 根据查询参数处理数据（这里只是简单地返回所有数据）  
     // 在实际应用中，你可能需要根据 page_size 和 page_no 来分页数据  
