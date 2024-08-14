@@ -13,8 +13,18 @@
       >
         <el-row>
           <template v-for="item in formItems" :key="item.label">
-            <el-col v-bind="colLayout">
+            <el-col
+              v-bind="
+                item.display == 'block' || item.type == 'group'
+                  ? { span: 24 }
+                  : colLayout
+              "
+            >
+              <div v-if="item.type == 'group'" class="form-group">
+                {{ item.label }}
+              </div>
               <el-form-item
+                v-else
                 :label="item.label"
                 :style="itemStyle"
                 :prop="item.field"
@@ -75,7 +85,7 @@
         </el-row>
       </el-form>
       <div class="footer">
-        <slot name="footer">footer</slot>
+        <slot name="footer"></slot>
       </div>
     </div>
   </div>
@@ -85,8 +95,6 @@
 import { PropType, ref, watch, defineEmits } from 'vue'
 import { IFormItem } from '@/base-ui/form/type/index'
 import { COLLAYOUT } from '@/consts'
-
-import ZzRate from '@/components/zz-rate'
 
 const props = defineProps({
   modelValue: {
@@ -114,12 +122,14 @@ const props = defineProps({
 
 let rules: any = {}
 props.formItems.forEach((item) => {
-  if (item.validator) {
-    rules[item.field] = [{ required: true, validator: item.validator }]
-  } else if (item.required) {
-    rules[item.field] = [
-      { required: true, message: item.message || '不能为空' }
-    ]
+  if (item.field) {
+    if (item.validator) {
+      rules[item.field] = [{ required: true, validator: item.validator }]
+    } else if (item.required) {
+      rules[item.field] = [
+        { required: true, message: item.message || '不能为空' }
+      ]
+    }
   }
 })
 
@@ -149,7 +159,7 @@ watch(
 defineExpose({ resetFields, validate })
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .content {
   /* display: flex; */
   width: 100%;
@@ -163,5 +173,23 @@ defineExpose({ resetFields, validate })
 }
 .footer {
   min-width: 220px;
+}
+.form-group {
+  &:before {
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 0;
+    width: 2px;
+    background-color: #298dff;
+    content: '';
+  }
+  padding: 6px 0 6px 8px;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  border-bottom: 1px solid #f1f2f5;
+  margin-bottom: 16px;
 }
 </style>

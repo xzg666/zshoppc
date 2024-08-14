@@ -53,7 +53,9 @@ const props = defineProps({
 const formItems = props.searchFormConfig?.formItems ?? []
 const formOriginData: any = {}
 formItems.forEach((item: any) => {
-  formOriginData[item.field] = ''
+  if (item.field) {
+    formOriginData[item.field] = ''
+  }
 })
 const formData = ref(formOriginData)
 

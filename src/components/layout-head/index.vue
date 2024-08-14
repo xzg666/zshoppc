@@ -1,6 +1,8 @@
 <template>
   <div class="layout-head">
-    <div></div>
+    <div>
+      <hy-breadcrumb :breadcrumbs="breadcrumbs"></hy-breadcrumb>
+    </div>
     <div class="layout-head-right">
       <!-- {{ $t('components.layout-head.228891-0') }} -->
       <el-dropdown @command="handleLangClick" trigger="hover">
@@ -58,9 +60,12 @@
 
 <script setup lang="ts">
 import { useLoginStore, useLangStore } from '@/stores/modules/index'
+import HyBreadcrumb, { IBreadcrumb } from '@/base-ui/breadcrumb'
 import { ElLoading } from 'element-plus'
 import { computed, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
+import { pathMapBreadcrumb } from '@/utils/menu'
 
 const i18n = useI18n()
 const { t } = i18n
@@ -73,7 +78,8 @@ const langList = computed(() => [
 ])
 
 const {
-  userInfo: { avatar, name }
+  userInfo: { avatar, name },
+  userMenus
 } = loginStore
 
 const handleLogout = () => {
@@ -92,6 +98,17 @@ const handleLangClick = (command: string) => {
   loading?.close()
   location.reload() //重置elementplus的语言包
 }
+const route = useRoute()
+
+//添加响应式
+const breadcrumbs = computed<IBreadcrumb[]>(() => {
+  const currentPath = route.path
+  const routerRes = pathMapBreadcrumb(userMenus, currentPath)
+  return (routerRes || []).map((item: any) => ({
+    name: item.meta.title,
+    path: item.url
+  }))
+})
 </script>
 
 <style lang="less" scoped>

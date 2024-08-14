@@ -71,7 +71,9 @@ watch(
   (newval) => {
     console.log('new', newval, props.modalConfig.formItems)
     props.modalConfig.formItems.forEach((item: any) => {
-      formData.value[item.field] = newval[item.field]
+      if (item.field) {
+        formData.value[item.field] = newval[item.field]
+      }
     })
   }
 )

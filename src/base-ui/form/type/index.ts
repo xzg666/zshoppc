@@ -1,11 +1,12 @@
 
-type IFormType = 'input' | 'password' | 'select' | 'datepicker' | 'input-number'
+type IFormType = 'input' | 'password' | 'select' | 'datepicker' | 'input-number' | 'group'
+type IFormDisplayType = 'inline' | 'block'
 export interface IFormItem {
-    field: string
+    field?: string
     type?: IFormType
     label: string
     rules?: any[]
-    placeholder: string
+    placeholder?: string
     multiple?: Boolean
     required?: Boolean
     message?: string
@@ -23,6 +24,7 @@ export interface IFormItem {
     //     }
     //   }
     fixed?: string
+    display?: IFormDisplayType
     // 对于select
     options?: any[]
     component?: any

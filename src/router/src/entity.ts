@@ -6,11 +6,11 @@ export default {
         {
             path: 'good',
             name: '商品列表',
-            component: () => import('@/views/entity/good/index.vue'),
+            component: () => import('@/views/entity/good/index/index.vue'),
             children: [
                 {
                     path: 'editor/:itemId?',
-                    component: () => import('@/views/entity/good/edit.vue')
+                    component: () => import('@/views/entity/good/edit/index.vue')
                 },
             ]
         },

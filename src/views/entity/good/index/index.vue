@@ -38,6 +38,13 @@
               @click="handleDeleteClick"
               >{{ $t('category.index.363177-2') }}</el-button
             >
+            <el-button
+              icon="edit"
+              size="mini"
+              type="text"
+              @click="handleEditDtailClick(scope.row)"
+              >{{ $t('category.index.363177-1') }}</el-button
+            >
           </div>
         </template>
         <template #img="scope">
@@ -116,6 +123,10 @@ const handleEditClick = (item: any) => {
     tag: item.tag.map((item: any) => item.id),
     price: item.price / 100
   }
+}
+
+const handleEditDtailClick = (item: any) => {
+  router.push(route.path + '/editor?itemId=' + item.id)
 }
 
 const handleAddClick = () => {

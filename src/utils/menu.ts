@@ -129,3 +129,33 @@ export function getAllPageLang(files: Record<string, any>) {
     return langObj
 
 }
+
+
+export function pathMapBreadcrumb(userMenus: any[], curPath: string) {
+    console.log(userMenus, curPath);
+
+    const find = (routeList: any, currentPath: any = []): any => {
+        for (const route of routeList) {
+            const newPath = [...currentPath, route]; // 创建一个新路径数组，包含当前路由  
+
+            if (route.url === curPath) {
+                // 如果找到了目标路径，返回新路径的副本  
+                return [...newPath];
+            }
+
+            if (route.children) {
+                // 递归查找子路由  
+                const result = find(route.children, newPath);
+                if (result) {
+                    return result; // 返回找到的路径  
+                }
+            }
+
+            // 如果没有找到，继续查找下一个路由（无需清理newPath，因为它是局部变量）  
+        }
+        // 如果没有找到匹配项，返回null  
+        return null;
+    };
+
+    return find(userMenus);
+} 
