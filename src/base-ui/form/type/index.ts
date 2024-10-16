@@ -11,6 +11,7 @@ export interface IFormItem {
     required?: Boolean
     message?: string
     validator?: any
+    visable?: Boolean
     // (rule, value, callback) => {
     //     console.log('value:', value)
     //     if (!this.form.is_self_delivery && this.dadaEnable && value.is_dada) {

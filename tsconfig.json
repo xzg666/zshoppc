@@ -25,6 +25,6 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/views/entity/func/category/config/page-content.js", "src/views/entity/func/category/config/page-content.js"  ],
   "exclude": ["node_modules"]
 }

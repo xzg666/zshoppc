@@ -25,6 +25,7 @@ export const modalConfig = {
             type: 'input-number',
             label: t('config.page-modal.269462-4'),
             placeholder: t('config.page-modal.269462-5'),
+            visable: () => true,
             otherOptions: {
                 precision: "2",
                 step: "0.1",

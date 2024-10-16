@@ -16,56 +16,58 @@ export const pageFormConfig: IForm = {
             type: 'input',
             label: t('config.page-modal.269462-1'),
             placeholder: t('config.page-modal.269462-2'),
-            required: true,
-            message: t('config.page-modal.269462-3')
-            // validator: (rule, value, callback) => {
-            //     if (!value) {
-            //         callback(new Error(t('config.page-modal.269462-3')))
-            //     } else {
-            //         callback()
-            //     }
-            // }
+            // required: true,
+            // message: t('config.page-modal.269462-3'),
+            validator: (rule, value, callback) => {
+                console.log(value);
+
+                if (value == 1) {
+                    callback(new Error(t('config.page-modal.269462-3')))
+                } else {
+                    callback()
+                }
+            }
         },
-        {
-            field: 'name',
-            type: 'input',
-            label: t('config.page-modal.269462-1'),
-            placeholder: t('config.page-modal.269462-2'),
-            required: true,
-            message: t('config.page-modal.269462-3')
-        },
-        {
-            field: 'name',
-            type: 'input',
-            label: t('config.page-modal.269462-1'),
-            placeholder: t('config.page-modal.269462-2'),
-            required: true,
-            message: t('config.page-modal.269462-3')
-        },
-        {
-            field: 'name',
-            type: 'input',
-            label: t('config.page-modal.269462-1'),
-            placeholder: t('config.page-modal.269462-2'),
-            required: true,
-            message: t('config.page-modal.269462-3')
-        },
-        {
-            field: 'name',
-            type: 'input',
-            label: t('config.page-modal.269462-1'),
-            placeholder: t('config.page-modal.269462-2'),
-            required: true,
-            message: t('config.page-modal.269462-3')
-        },
-        {
-            field: 'name',
-            type: 'input',
-            label: t('config.page-modal.269462-1'),
-            placeholder: t('config.page-modal.269462-2'),
-            required: true,
-            message: t('config.page-modal.269462-3')
-        },
+        // {
+        //     field: 'name',
+        //     type: 'input',
+        //     label: t('config.page-modal.269462-1'),
+        //     placeholder: t('config.page-modal.269462-2'),
+        //     required: true,
+        //     message: t('config.page-modal.269462-3')
+        // },
+        // {
+        //     field: 'name',
+        //     type: 'input',
+        //     label: t('config.page-modal.269462-1'),
+        //     placeholder: t('config.page-modal.269462-2'),
+        //     required: true,
+        //     message: t('config.page-modal.269462-3')
+        // },
+        // {
+        //     field: 'name',
+        //     type: 'input',
+        //     label: t('config.page-modal.269462-1'),
+        //     placeholder: t('config.page-modal.269462-2'),
+        //     required: true,
+        //     message: t('config.page-modal.269462-3')
+        // },
+        // {
+        //     field: 'name',
+        //     type: 'input',
+        //     label: t('config.page-modal.269462-1'),
+        //     placeholder: t('config.page-modal.269462-2'),
+        //     required: true,
+        //     message: t('config.page-modal.269462-3')
+        // },
+        // {
+        //     field: 'name',
+        //     type: 'input',
+        //     label: t('config.page-modal.269462-1'),
+        //     placeholder: t('config.page-modal.269462-2'),
+        //     required: true,
+        //     message: t('config.page-modal.269462-3')
+        // },
         {
             field: 'price',
             type: 'input-number',
@@ -84,14 +86,14 @@ export const pageFormConfig: IForm = {
                 }
             }
         },
-        {
-            field: 'name',
-            type: 'input',
-            label: t('config.page-modal.269462-1'),
-            placeholder: t('config.page-modal.269462-2'),
-            required: true,
-            message: t('config.page-modal.269462-3')
-        },
+        // {
+        //     field: 'name',
+        //     type: 'input',
+        //     label: t('config.page-modal.269462-1'),
+        //     placeholder: t('config.page-modal.269462-2'),
+        //     required: true,
+        //     message: t('config.page-modal.269462-3')
+        // },
         {
             field: 'price',
             type: 'input-number',
@@ -120,6 +122,17 @@ export const pageFormConfig: IForm = {
             options: [],
             display: 'block'
         },
+        {
+            field: 'rate',
+            label: t('config.page-search.262573-9'),
+            placeholder: t('config.page-search.262573-6'),
+            component: defineAsyncComponent(() => import('@/components/zz-rate')),
+            componentProps: {
+                isHalf: true
+            },
+            display: 'block'
+
+        }
 
 
     ],

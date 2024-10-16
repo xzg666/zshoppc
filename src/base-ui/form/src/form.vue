@@ -14,6 +14,7 @@
         <el-row>
           <template v-for="item in formItems" :key="item.label">
             <el-col
+              v-if="handleVisable(item)"
               v-bind="
                 item.display == 'block' || item.type == 'group'
                   ? { span: 24 }
@@ -95,6 +96,7 @@
 import { PropType, ref, watch, defineEmits } from 'vue'
 import { IFormItem } from '@/base-ui/form/type/index'
 import { COLLAYOUT } from '@/consts'
+import { isFunction } from 'element-plus/es/utils'
 
 const props = defineProps({
   modelValue: {
@@ -141,6 +143,13 @@ const resetFields = () => {
 
 const validate = () => {
   return formRef.value && formRef.value.validate()
+}
+
+const handleVisable = (item: any) => {
+  if (item.visable && typeof item.visable == 'function') {
+    return item.visable()
+  }
+  return item.visable ?? true
 }
 
 const emit = defineEmits(['update:modelValue'])
