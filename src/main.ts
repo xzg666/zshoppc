@@ -1,7 +1,7 @@
 import './assets/css/main.less'
 import 'normalize.css'
 
-import { createApp } from 'vue'
+import { createApp, createVNode, h, nextTick } from 'vue'
 import store from './stores'
 
 import App from './App.vue'
@@ -18,11 +18,10 @@ import elementplusEn from 'element-plus/es/locale/lang/en'
 
 import { globalRegitser } from './global'
 
+import ZzPickers from '@/components/zz-pickers'
+
 //mock
 import '@/mock'
-
-
-
 
 const app = createApp(App)
 console.log(getCurrLang());

@@ -7,6 +7,8 @@
         @resetBtnClick="resetBtnClick"
       ></pageSearch>
       <div class="action-box">
+        <el-button @click="isVisible = true">触发弹框</el-button>
+        <el-button @click="$picker">触发弹框</el-button>
         <el-button @click="handleAddClick">{{
           $t('category.index.363177-0')
         }}</el-button>
@@ -72,6 +74,7 @@
         :modalConfig="modalConfig"
         @confirm="handleModalConfirm"
       />
+      <ZzPicker :isVisible="isVisible" />
     </div>
 
     <router-view />
@@ -90,13 +93,21 @@ import { searchFormConfig } from './config/page-search'
 import { contentTableConfig } from './config/page-content'
 import { modalConfig } from './config/page-modal'
 
+import ZzPicker from '@/components/zz-picker'
+
 import { usePageSearch } from '@/hooks'
 
 import axios from 'axios'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import dayjs from 'dayjs'
 import i18n from '@/i18n'
+
+import { getCurrentInstance } from 'vue'
 const { t } = i18n.global
+
+const instance = getCurrentInstance()
+const picker = instance?.proxy?.$picker
+console.log(666, picker)
 
 const [pageContentRef, queryBtnClick, resetBtnClick] = usePageSearch(
   //搜索参数处理
@@ -194,6 +205,8 @@ const getTagList = () => {
   })
 }
 getTagList()
+
+const isVisible = ref(false)
 </script>
 
 <style lang="less" scoped>
