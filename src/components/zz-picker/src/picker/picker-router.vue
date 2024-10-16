@@ -47,6 +47,7 @@ const props = defineProps({
 
 const contentTableConfig = {
   url: 'menu',
+  showSelectColumn: true,
   propList: [
     {
       prop: 'name',
