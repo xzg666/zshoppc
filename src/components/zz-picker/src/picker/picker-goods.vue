@@ -1,5 +1,6 @@
 <template>
   <div>
+    <el-button @click="handleClick">123</el-button>
     <pageSearch
       :searchFormConfig="searchFormConfig"
       @queryBtnClick="queryBtnClick"
@@ -9,6 +10,7 @@
       ref="pageContentRef"
       :contentTableConfig="contentTableConfig"
       @selectionChange="selectionChange"
+      @afterFetch="afterFetch"
     >
       <template #price="scope">
         {{ '¥' + (scope.row.price / 100).toFixed(2) }}
@@ -38,7 +40,15 @@
 <script setup lang="ts">
 import pageContent from '@/components/page-content'
 import pageSearch from '@/components/page-search'
-import { defineAsyncComponent, defineProps } from 'vue'
+import {
+  defineAsyncComponent,
+  defineProps,
+  ref,
+  defineExpose,
+  onMounted,
+  nextTick,
+  onUpdated
+} from 'vue'
 import i18n from '@/i18n'
 
 import { usePageSearch } from '@/hooks'
@@ -49,6 +59,23 @@ const props = defineProps({
     type: Object,
     default: () => ({})
   }
+})
+
+console.log('-=-=-3', props.value)
+
+const selecData = ref([])
+
+const selectionChange = (val) => {
+  console.log(val)
+  selecData.value = val
+}
+
+const getVal = () => {
+  return selecData.value
+}
+
+defineExpose({
+  getVal
 })
 
 const [pageContentRef, queryBtnClick, resetBtnClick] = usePageSearch(
@@ -64,6 +91,41 @@ const [pageContentRef, queryBtnClick, resetBtnClick] = usePageSearch(
     }
   }
 )
+
+const afterFetch = (val) => {
+  //回显勾选
+  handleCheckDefault(val)
+}
+
+const tableData = ref([])
+
+const handleCheckDefault = (list) => {
+  tableData.value = list
+  const ids = props.value.ids
+  const tableRef = pageContentRef?.value?.getTabRef()
+  console.log('picker-good2', list)
+  nextTick(() => {
+    list.forEach((item) => {
+      if (ids.includes(item.id)) {
+        tableRef?.toggleRowSelection(item, true)
+      }
+    })
+  })
+}
+
+const handleClick = () => {
+  const ids = props.value.ids
+  const tableRef = pageContentRef?.value?.getTabRef()
+  // tableRef?.clearSelection()
+  nextTick(() => {
+    tableData.value.forEach((item) => {
+      if (ids.includes(item.id)) {
+        console.log('picker-good2', item, tableRef?.setCurrentRow)
+        tableRef?.toggleRowSelection(item, true)
+      }
+    })
+  })
+}
 
 const contentTableConfig = {
   url: 'good',

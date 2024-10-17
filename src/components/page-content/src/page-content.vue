@@ -1,6 +1,7 @@
 <template>
   <div>
     <ZzTable
+      ref="zzTableRef"
       :listData="dataList"
       :listCount="listCount"
       v-bind="contentTableConfig"
@@ -26,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits, watch } from 'vue'
+import { ref, defineProps, defineEmits, watch, defineExpose } from 'vue'
 import ZzTable from '@/base-ui/table/index'
 import axios from 'axios'
 
@@ -68,6 +69,7 @@ const getDataList = (queryInfo: any = {}) => {
       console.log(response.data)
       dataList.value = response.data.list
       listCount.value = response.data.total
+      emit('afterFetch', response.data.list)
     })
     .finally(() => {
       loading.value = false
@@ -75,14 +77,17 @@ const getDataList = (queryInfo: any = {}) => {
 }
 
 getDataList()
-defineExpose({ getDataList })
+
+const zzTableRef = ref()
+
+defineExpose({ getDataList, getTabRef: () => zzTableRef.value.tableRef })
 
 const otherPropSlot = props?.contentTableConfig?.propList.filter(
   (item: any) => {
     return !['updateTime'].includes(item.slotName)
   }
 )
-const emit = defineEmits(['selectionChange'])
+const emit = defineEmits(['selectionChange', 'afterFetch'])
 
 const selectionChange = (val: any) => {
   emit('selectionChange', val)

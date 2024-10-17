@@ -17,8 +17,7 @@ import elementplusZhCn from 'element-plus/es/locale/lang/zh-cn'
 import elementplusEn from 'element-plus/es/locale/lang/en'
 
 import { globalRegitser } from './global'
-
-import ZzPickers from '@/components/zz-pickers'
+import { ZzPickerPlugin } from '@/components/zz-picker'
 
 //mock
 import '@/mock'
@@ -33,6 +32,8 @@ app.use(ElementPlus, {
     locale: getCurrLang() == 'zh' ? elementplusZhCn : elementplusEn,
 })
 app.use(globalRegitser)
+
+// app.use(ZzPickerPlugin)
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)

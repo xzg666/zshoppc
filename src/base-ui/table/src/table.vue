@@ -1,7 +1,10 @@
 <template>
   <div class="zz-table">
     <el-table
+      ref="tableRef"
       :data="listData"
+      highlight-current-row
+      row-key="id"
       border
       style="width: 100%"
       @selection-change="handleSelectChange"
@@ -11,6 +14,7 @@
       <el-table-column
         v-if="showSelectColumn"
         type="selection"
+        :reserve-selection="true"
         align="center"
         width="60"
       ></el-table-column>
@@ -51,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, ref, watch, defineEmits } from 'vue'
+import { PropType, ref, watch, defineEmits, defineExpose, onMounted } from 'vue'
 
 const props = defineProps({
   title: {
@@ -95,6 +99,10 @@ const props = defineProps({
     default: false
   }
 })
+
+const tableRef = ref()
+
+defineExpose({ tableRef })
 
 const emit = defineEmits([
   'update:modelValue',

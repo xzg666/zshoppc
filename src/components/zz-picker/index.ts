@@ -1,3 +1,7 @@
-import ZzPicker from './src/zz-picker.vue'
+import Main from './src/main.vue'
 
-export default ZzPicker
+export default Main
+
+export { default as ZzPickerPlugin } from './src/plugin'
+
+

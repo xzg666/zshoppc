@@ -1,31 +1,39 @@
 <template>
   <div>
-    <ElDialog
+    <el-dialog
       v-model="dialogVisible"
       title="选择商品"
       width="1200"
       :before-close="handleClose"
     >
-      <PickerType ref="picker" :value="value" type="PickerRouter" />
+      <PickerType
+        v-if="dialogVisible"
+        ref="pickeRef"
+        :value="value"
+        :type="type"
+      />
       <template #footer>
         <div class="dialog-footer">
-          <ElButton @click="handleClose">Cancel</ElButton>
-          <ElButton type="primary" @click="handleConfirm"> Confirm </ElButton>
+          <el-button @click="handleClose">Cancel</el-button>
+          <el-button type="primary" @click="handleConfirm"> Confirm </el-button>
         </div>
       </template>
-    </ElDialog>
+    </el-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, watch, defineExpose } from 'vue'
+import { defineProps, ref, watch, defineEmits, defineExpose } from 'vue'
 import PickerType from './picker-type.vue'
-import { ElDialog, ElButton } from 'element-plus'
 import 'element-plus/dist/index.css'
 const props = defineProps({
   value: {
     type: Object,
     default: () => ({})
+  },
+  type: {
+    type: String,
+    default: ''
   },
   isVisible: {
     type: Boolean,
@@ -43,15 +51,20 @@ watch(
   }
 )
 
+const pickeRef = ref()
+
+const emit = defineEmits(['confirm', 'close'])
+
 const handleClose = () => {
   dialogVisible.value = false
+  emit('close')
 }
-
+console.log(66, pickeRef.value)
 const handleConfirm = () => {
+  console.log(pickeRef?.value.getVal())
   dialogVisible.value = false
+  emit('confirm', pickeRef?.value?.getVal())
 }
-
-defineExpose({ dialogVisible })
 </script>
 
 <style scoped></style>

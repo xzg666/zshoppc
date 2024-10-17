@@ -7,8 +7,12 @@
         @resetBtnClick="resetBtnClick"
       ></pageSearch>
       <div class="action-box">
-        <el-button @click="isVisible = true">触发弹框</el-button>
-        <el-button @click="$picker">触发弹框</el-button>
+        <el-button @click="isVisible = true">{{
+          selecData.length
+            ? selecData.map((item: any) => item.name).join(',')
+            : '请选择'
+        }}</el-button>
+        <!-- <el-button @click="handlePickerClick">触发弹框方法</el-button> -->
         <el-button @click="handleAddClick">{{
           $t('category.index.363177-0')
         }}</el-button>
@@ -74,7 +78,13 @@
         :modalConfig="modalConfig"
         @confirm="handleModalConfirm"
       />
-      <ZzPicker :isVisible="isVisible" />
+      <ZzPicker
+        type="goods"
+        :isVisible="isVisible"
+        :value="pickerValue"
+        @close="isVisible = false"
+        @confirm="handlePickerConfirm"
+      />
     </div>
 
     <router-view />
@@ -82,7 +92,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import pageSearch from '@/components/page-search'
@@ -108,6 +118,11 @@ const { t } = i18n.global
 const instance = getCurrentInstance()
 const picker = instance?.proxy?.$picker
 console.log(666, picker)
+
+const handlePickerClick = async () => {
+  const res = await picker.goods()
+  console.log(66666, res)
+}
 
 const [pageContentRef, queryBtnClick, resetBtnClick] = usePageSearch(
   //搜索参数处理
@@ -207,6 +222,16 @@ const getTagList = () => {
 getTagList()
 
 const isVisible = ref(false)
+const selecData = ref([])
+const pickerValue = reactive({
+  ids: []
+})
+const handlePickerConfirm = (val) => {
+  console.log(val.length)
+  selecData.value = val
+  isVisible.value = false
+  pickerValue.ids = val.map((item) => item.id)
+}
 </script>
 
 <style lang="less" scoped>
