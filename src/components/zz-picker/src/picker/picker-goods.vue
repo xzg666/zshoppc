@@ -47,7 +47,8 @@ import {
   defineExpose,
   onMounted,
   nextTick,
-  onUpdated
+  onUpdated,
+  defineEmits
 } from 'vue'
 import i18n from '@/i18n'
 
@@ -60,8 +61,6 @@ const props = defineProps({
     default: () => ({})
   }
 })
-
-console.log('-=-=-3', props.value)
 
 const selecData = ref([])
 

@@ -12,7 +12,7 @@
             ? selecData.map((item: any) => item.name).join(',')
             : '请选择'
         }}</el-button>
-        <!-- <el-button @click="handlePickerClick">触发弹框方法</el-button> -->
+        <el-button @click="handlePickerClick">触发弹框方法</el-button>
         <el-button @click="handleAddClick">{{
           $t('category.index.363177-0')
         }}</el-button>

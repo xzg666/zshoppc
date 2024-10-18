@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { PickerGoods, PickerRouter, PickerAll } from './picker'
-import { defineProps, ref, watch } from 'vue'
+import { defineProps, ref, watch, defineEmits } from 'vue'
 const props = defineProps({
   type: {
     type: String,

@@ -52,6 +52,7 @@ const showPicker = (data: any) => {
         }
         const componentInstance = newApp.mount(document.createElement('div'));
         document.body.appendChild(componentInstance.$el);
+
     })
 
 };

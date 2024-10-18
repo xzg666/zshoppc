@@ -33,7 +33,7 @@ app.use(ElementPlus, {
 })
 app.use(globalRegitser)
 
-// app.use(ZzPickerPlugin)
+app.use(ZzPickerPlugin)
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
