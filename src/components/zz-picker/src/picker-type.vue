@@ -1,6 +1,11 @@
 <template>
   <div>
-    <component :is="resolvePicker(type)" :value="value" ref="componentRef" />
+    <component
+      :is="resolvePicker(type)"
+      :value="value"
+      @select="handleSelect"
+      ref="componentRef"
+    />
   </div>
 </template>
 
@@ -27,6 +32,14 @@ const componentRef = ref()
 defineExpose({
   getVal: () => componentRef.value?.getVal()
 })
+
+const emit = defineEmits(['select'])
+
+const handleSelect = (val) => {
+  console.log(5555, val)
+
+  emit('select', val)
+}
 
 const resolvePicker = (type: string) => {
   switch (type) {

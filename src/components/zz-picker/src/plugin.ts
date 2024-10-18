@@ -1,6 +1,5 @@
 import { createApp, createVNode, defineComponent, nextTick, onMounted, onUnmounted, render, h } from 'vue';
 import Main from './main.vue';
-// import 'element-plus/dist/index.css'
 import ElementPlus from 'element-plus'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import i18n, { getCurrLang } from "@/i18n";
@@ -9,10 +8,13 @@ import elementplusEn from 'element-plus/es/locale/lang/en'
 
 const $pickerFunctions = {
     goods: (args: any) => {
-        return showPicker({ value: { ...args }, type: 'goods', width: '1008px' });
+        return showPicker({ value: { ...args }, type: 'goods', title: '选择商品', width: '1008px' });
     },
     router: (args: any) => {
-        return showPicker({ value: { ...args }, type: 'router', width: '788px' });
+        return showPicker({ value: { ...args }, type: 'router', title: '选择路由', width: '788px' });
+    },
+    all: (args: any) => {
+        return showPicker({ value: { ...args }, type: 'all', title: '选择', width: '1200px' });
     },
 };
 

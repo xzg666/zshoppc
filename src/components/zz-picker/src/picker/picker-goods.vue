@@ -1,6 +1,5 @@
 <template>
   <div>
-    <el-button @click="handleClick">123</el-button>
     <pageSearch
       :searchFormConfig="searchFormConfig"
       @queryBtnClick="queryBtnClick"
@@ -62,11 +61,13 @@ const props = defineProps({
   }
 })
 
+const emit = defineEmits(['select'])
 const selecData = ref([])
 
 const selectionChange = (val) => {
   console.log(val)
   selecData.value = val
+  emit('select', selecData.value)
 }
 
 const getVal = () => {
@@ -106,20 +107,6 @@ const handleCheckDefault = (list) => {
   nextTick(() => {
     list.forEach((item) => {
       if (ids.includes(item.id)) {
-        tableRef?.toggleRowSelection(item, true)
-      }
-    })
-  })
-}
-
-const handleClick = () => {
-  const ids = props.value.ids
-  const tableRef = pageContentRef?.value?.getTabRef()
-  // tableRef?.clearSelection()
-  nextTick(() => {
-    tableData.value.forEach((item) => {
-      if (ids.includes(item.id)) {
-        console.log('picker-good2', item, tableRef?.setCurrentRow)
         tableRef?.toggleRowSelection(item, true)
       }
     })

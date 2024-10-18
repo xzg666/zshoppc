@@ -14,7 +14,7 @@
     />
     <template #footer>
       <div class="footer-box">
-        <div class="select-txt">当前选择 {{ selectNum }} 条</div>
+        <div class="select-txt">当前选择 {{ selecData.length || 0 }} 条</div>
         <div class="dialog-footer">
           <el-button @click="handleClose">Cancel</el-button>
           <el-button type="primary" @click="handleConfirm"> Confirm </el-button>
@@ -83,15 +83,16 @@ const handleClose = () => {
 console.log(66, pickeRef.value)
 
 const handleConfirm = () => {
-  // console.log(pickeRef?.value.getVal())
   dialogVisible.value = false
-  // emit('confirm', pickeRef?.value?.getVal())
+  //这里也可以用下面的selecData，这里是使用ref传值
   props.confirm?.(pickeRef?.value?.getVal())
 }
 
-const selectNum = ref(0)
+const selecData = ref([])
 
-// const selecDatNum = computed(() => pickeRef?.value?.getSelecData())
+const handleSelect = (val) => {
+  selecData.value = val
+}
 </script>
 
 <style scoped lang="less">
