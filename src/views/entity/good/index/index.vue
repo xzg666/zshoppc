@@ -12,7 +12,13 @@
             ? selecData.map((item: any) => item.name).join(',')
             : '请选择'
         }}</el-button>
-        <el-button @click="handlePickerClick">触发弹框方法</el-button>
+        <el-button @click="handlePickerClick">
+          {{
+            selecData.length
+              ? selecData.map((item: any) => item.name).join(',')
+              : '请选择'
+          }}
+        </el-button>
         <el-button @click="handleAddClick">{{
           $t('category.index.363177-0')
         }}</el-button>
@@ -80,6 +86,7 @@
       />
       <ZzPicker
         type="goods"
+        v-if="isVisible"
         :isVisible="isVisible"
         :value="pickerValue"
         @close="isVisible = false"
@@ -117,11 +124,14 @@ const { t } = i18n.global
 
 const instance = getCurrentInstance()
 const picker = instance?.proxy?.$picker
-console.log(666, picker)
 
 const handlePickerClick = async () => {
-  const res = await picker.goods()
-  console.log(66666, res)
+  const res = await picker.goods({
+    ids: selecData.value.map((item) => item.id)
+  })
+  console.log('picker res', res)
+  selecData.value = res
+  pickerValue.ids = res.map((item) => item.id)
 }
 
 const [pageContentRef, queryBtnClick, resetBtnClick] = usePageSearch(

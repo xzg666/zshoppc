@@ -1,65 +1,55 @@
-import { createApp, createVNode, defineComponent, nextTick, onMounted, onUnmounted, render } from 'vue';
+import { createApp, createVNode, defineComponent, nextTick, onMounted, onUnmounted, render, h } from 'vue';
 import Main from './main.vue';
+// import 'element-plus/dist/index.css'
 import ElementPlus from 'element-plus'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import 'element-plus/dist/index.css'
+import i18n, { getCurrLang } from "@/i18n";
+import elementplusZhCn from 'element-plus/es/locale/lang/zh-cn'
+import elementplusEn from 'element-plus/es/locale/lang/en'
 
 const $pickerFunctions = {
-    goods(args: any) {
-        return showPicker({ value: { ...args }, type: 'pickerGoods', width: '1008px' });
+    goods: (args: any) => {
+        return showPicker({ value: { ...args }, type: 'goods', width: '1008px' });
     },
-    router(args: any) {
-        return showPicker({ value: { ...args }, type: 'PickerRouter', width: '788px' });
+    router: (args: any) => {
+        return showPicker({ value: { ...args }, type: 'router', width: '788px' });
     },
 };
 
 const showPicker = (data: any) => {
     return new Promise<void>((resolve, reject) => {
-
-        const vm = defineComponent({
-            components: { Main },
-            data() {
-                return {
-                    ...data,
-                    dialogVisible: true,
-                };
+        const Vnode: any = h(Main, {
+            ...data,
+            dialogVisible: true,
+            close: () => {
+                reject("close");
+                document.body.removeChild(container);
             },
-            setup(props) {
-                const teardown = () => {
-                    vm.unmount();
-                };
-                onMounted(() => {
-                    onUnmounted(teardown);
-                    const closeHandler = () => teardown();
-                    const inputHandler = (val: any) => {
-                        teardown();
-                        return Promise.resolve(val);
-                    };
-                    // emit('close', closeHandler);
-                    // emit('input', inputHandler);
-                });
-                return {
-                    MainComponent: Main,
-                };
+            confirm: (res: any) => {
+                resolve(res);
+                render(null, container);
+                document.body.removeChild(container);
             },
-            template: '<Main v-if="dialogVisible" />',
         });
-        console.log(444, vm)
-        const newApp = createApp(vm)
-        newApp.use(ElementPlus)
-        for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-            newApp.component(key, component)
-        }
-        const componentInstance = newApp.mount(document.createElement('div'));
-        document.body.appendChild(componentInstance.$el);
+        const container = document.createElement('div');
 
+        const app = createApp(Vnode)
+        //这里需要都注册一次
+        app.use(i18n)
+        app.use(ElementPlus, {
+            locale: getCurrLang() == 'zh' ? elementplusZhCn : elementplusEn,
+        })
+        for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+            app.component(key, component)
+        }
+        app.mount(container)
+        document.body.appendChild(container);
     })
 
 };
 
 export default {
-    install(app, options = {}) {
-        app.component('Main', Main);
+    install(app: any) {
         app.config.globalProperties.$picker = $pickerFunctions;
     },
 };

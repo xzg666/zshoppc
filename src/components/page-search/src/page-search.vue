@@ -5,9 +5,9 @@
       <template #footer>
         <div class="search-footer">
           <div>
-            <el-button type="primary" icon="search" @click="handleQueryClick">{{
-              $t('src.page-search.035853-0')
-            }}</el-button>
+            <el-button type="primary" icon="search" @click="handleQueryClick"
+              >{{ $t('src.page-search.035853-0') }}
+            </el-button>
             <el-button icon="refresh" @click="handleResetClick">{{
               $t('src.page-search.035853-1')
             }}</el-button>
@@ -20,8 +20,8 @@
                   : $t('src.page-search.035853-3')
               }}
               <el-icon :size="14">
-                <component :is="isExpand ? 'ArrowDown' : 'ArrowUp'"
-              /></el-icon>
+                <component :is="isExpand ? 'ArrowDown' : 'ArrowUp'" />
+              </el-icon>
             </div>
           </div>
         </div>

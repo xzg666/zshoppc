@@ -10,7 +10,8 @@
       @selectionChange="selectionChange"
     >
       <template #updateTime="scope">
-        {{ $filters.formatTime(scope.row.updateTime * 1000) }}
+        <!-- {{ $filters.formatTime(scope.row.updateTime * 1000) }} -->
+        {{ scope.row.updateTime }}
       </template>
 
       <template

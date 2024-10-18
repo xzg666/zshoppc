@@ -31,12 +31,12 @@ app.use(i18n)
 app.use(ElementPlus, {
     locale: getCurrLang() == 'zh' ? elementplusZhCn : elementplusEn,
 })
-app.use(globalRegitser)
-
-app.use(ZzPickerPlugin)
-
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
+
+app.use(globalRegitser)
+
+app.use(ZzPickerPlugin)
 
 app.mount('#app')
