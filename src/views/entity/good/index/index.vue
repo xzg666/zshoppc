@@ -125,13 +125,20 @@ const { t } = i18n.global
 const instance = getCurrentInstance()
 const picker = instance?.proxy?.$picker
 
+const linkPage = ref('goods')
 const handlePickerClick = async () => {
   const res = await picker.all({
-    ids: selecData.value.map((item) => item.id)
+    ids: selecData.value.map((item) => item.id),
+    linkPage: linkPage.value
   })
-  console.log('picker res', res)
-  selecData.value = res
-  pickerValue.ids = res.map((item) => item.id)
+  console.log(
+    'picker res',
+    res.data,
+    res.data.map((item) => item.id)
+  )
+  selecData.value = res.data
+  pickerValue.ids = res.data.map((item) => item.id)
+  linkPage.value = res.linkPage
 }
 
 const [pageContentRef, queryBtnClick, resetBtnClick] = usePageSearch(
