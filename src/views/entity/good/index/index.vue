@@ -126,7 +126,7 @@ const instance = getCurrentInstance()
 const picker = instance?.proxy?.$picker
 
 const handlePickerClick = async () => {
-  const res = await picker.goods({
+  const res = await picker.all({
     ids: selecData.value.map((item) => item.id)
   })
   console.log('picker res', res)

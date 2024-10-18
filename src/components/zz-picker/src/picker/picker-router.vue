@@ -4,6 +4,7 @@
       ref="pageContentRef"
       :contentTableConfig="contentTableConfig"
       @selectionChange="selectionChange"
+      @afterFetch="afterFetch"
     >
       <template #price="scope">
         {{ '¥' + (scope.row.price / 100).toFixed(2) }}
@@ -32,7 +33,7 @@
 
 <script setup lang="ts">
 import pageContent from '@/components/page-content'
-import { defineAsyncComponent, defineProps } from 'vue'
+import { defineAsyncComponent, defineProps, nextTick, ref } from 'vue'
 import i18n from '@/i18n'
 
 import { usePageSearch } from '@/hooks'
@@ -44,6 +45,53 @@ const props = defineProps({
     default: () => ({})
   }
 })
+
+const emit = defineEmits(['select'])
+const selecData = ref([])
+
+const selectionChange = (val) => {
+  console.log(val)
+  selecData.value = val
+  emit('select', selecData.value)
+}
+
+const getVal = () => {
+  return selecData.value
+}
+
+defineExpose({
+  getVal
+})
+
+const afterFetch = (val) => {
+  //回显勾选
+  handleCheckDefault(val)
+}
+
+const tableData = ref([])
+
+const [pageContentRef] = usePageSearch()
+
+const handleCheckDefault = (list: any) => {
+  tableData.value = list
+  const ids = props.value.ids
+  console.log('picker-router', list, ids)
+  routerRecursionFunc(list, ids)
+}
+
+const routerRecursionFunc = (arr: any, targetArr: any) => {
+  arr.forEach((item: any) => {
+    if (targetArr.includes(item.id)) {
+      console.log(item)
+      nextTick(() => {
+        pageContentRef?.value?.getTabRef()?.toggleRowSelection(item, true)
+      })
+    }
+    if (item.children) {
+      routerRecursionFunc(item.children, targetArr)
+    }
+  })
+}
 
 const contentTableConfig = {
   url: 'menu',
@@ -68,7 +116,8 @@ const contentTableConfig = {
   ],
   childrenProps: {
     rowKey: 'id',
-    treeProp: { children: 'children' }
+    treeProp: { children: 'children' },
+    defaultExpandAll: true
   }
 }
 </script>

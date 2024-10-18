@@ -11,7 +11,7 @@
     >
       <template #updateTime="scope">
         <!-- {{ $filters.formatTime(scope.row.updateTime * 1000) }} -->
-        {{ scope.row.updateTime }}
+        {{ formatTime(scope.row.updateTime * 1000) }}
       </template>
 
       <template
@@ -31,6 +31,7 @@
 import { ref, defineProps, defineEmits, watch, defineExpose } from 'vue'
 import ZzTable from '@/base-ui/table/index'
 import axios from 'axios'
+import { formatTime } from '@/utils'
 
 const props = defineProps({
   contentTableConfig: {

@@ -44,15 +44,13 @@ import {
   defineProps,
   ref,
   defineExpose,
-  onMounted,
   nextTick,
-  onUpdated,
   defineEmits
 } from 'vue'
-import i18n from '@/i18n'
 
 import { usePageSearch } from '@/hooks'
 import dayjs from 'dayjs'
+import i18n from '@/i18n'
 const { t } = i18n.global
 const props = defineProps({
   value: {
@@ -78,20 +76,6 @@ defineExpose({
   getVal
 })
 
-const [pageContentRef, queryBtnClick, resetBtnClick] = usePageSearch(
-  //搜索参数处理
-  (query) => {
-    const { createTime } = query
-    return {
-      ...query,
-      createTime: [
-        dayjs(createTime[0]).valueOf() / 1000,
-        dayjs(createTime[1]).valueOf() / 1000
-      ]
-    }
-  }
-)
-
 const afterFetch = (val) => {
   //回显勾选
   handleCheckDefault(val)
@@ -112,6 +96,20 @@ const handleCheckDefault = (list) => {
     })
   })
 }
+
+const [pageContentRef, queryBtnClick, resetBtnClick] = usePageSearch(
+  //搜索参数处理
+  (query) => {
+    const { createTime } = query
+    return {
+      ...query,
+      createTime: [
+        dayjs(createTime[0]).valueOf() / 1000,
+        dayjs(createTime[1]).valueOf() / 1000
+      ]
+    }
+  }
+)
 
 const contentTableConfig = {
   url: 'good',
