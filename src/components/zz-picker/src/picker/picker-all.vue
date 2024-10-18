@@ -20,12 +20,8 @@
 <script setup lang="ts">
 import PickerGoods from './picker-goods.vue'
 import PickerRouter from './picker-router.vue'
-import { defineAsyncComponent, defineProps, onMounted, ref } from 'vue'
+import { defineProps, onMounted, ref } from 'vue'
 import i18n from '@/i18n'
-
-import { usePageSearch } from '@/hooks'
-import dayjs from 'dayjs'
-const { t } = i18n.global
 
 const props = defineProps({
   value: {
@@ -37,7 +33,6 @@ const props = defineProps({
 const tabValue = ref('goods')
 
 onMounted(() => {
-  console.log(4, props.value)
   tabValue.value = props.value.linkPage
 })
 
