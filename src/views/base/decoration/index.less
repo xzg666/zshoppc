@@ -115,10 +115,26 @@
       justify-content: center;
       padding-top: 24px;
       &-box {
-        width: 340px;
-
+        width: 360px;
         background: #fff;
         height: 100%;
+        &-item {
+          position: relative;
+          &:hover {
+            &:before {
+              border: 1px dashed #155bd4;
+              content: '';
+              position: absolute;
+              width: 360px;
+              height: 100%;
+              left: 0px;
+              top: 0;
+              box-sizing: border-box;
+              z-index: 99;
+              cursor: move;
+            }
+          }
+        }
       }
     }
 

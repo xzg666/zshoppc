@@ -45,7 +45,7 @@
           </template>
         </draggable>
       </div>
-      <div class="right-container">3</div>
+      <div class="right-container"></div>
     </div>
   </div>
 </template>
