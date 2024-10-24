@@ -6,12 +6,14 @@
           v-if="tabValue == 'goods'"
           ref="pickerGoods"
           :value="value"
+          @select="handleSelect"
       /></el-tab-pane>
       <el-tab-pane label="路由" name="router"
         ><PickerRouter
           v-if="tabValue == 'router'"
           ref="pickerRouter"
           :value="value"
+          @select="handleSelect"
       /></el-tab-pane>
     </el-tabs>
   </div>
@@ -35,6 +37,12 @@ const tabValue = ref('goods')
 onMounted(() => {
   tabValue.value = props.value.linkPage
 })
+
+const emit = defineEmits(['select'])
+
+const handleSelect = (val: any) => {
+  emit('select', val)
+}
 
 const pickerGoods = ref()
 const pickerRouter = ref()
