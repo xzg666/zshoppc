@@ -7,7 +7,13 @@ export default {
         {
             path: 'template',
             name: '首页模板',
-            component: () => import('@/views/wxapp/template/index.vue')
+            component: () => import('@/views/wxapp/template/index.vue'),
+            // children: [
+            //     {
+            //         path: 'editor',
+            //         component: () => import('@/views/base/decoration/index.vue')
+            //     },
+            // ]
         },
         {
             path: 'custompage',

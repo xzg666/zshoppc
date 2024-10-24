@@ -40,3 +40,5 @@ app.use(globalRegitser)
 app.use(ZzPickerPlugin)
 
 app.mount('#app')
+
+export default app

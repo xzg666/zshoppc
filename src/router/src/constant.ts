@@ -10,5 +10,11 @@ export default
             path: '/login',
             name: 'login',
             component: () => import('@/views/login/index.vue')
-        }
+        },
+        {
+            path: '/wxapp/manage/decorate',
+            name: 'decorate',
+            component: () => import('@/views/base/decoration/index.vue')
+        },
+
     ]
