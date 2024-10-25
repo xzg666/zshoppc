@@ -12,6 +12,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    .hd-lf {
+      color: #666;
+    }
   }
   &-bd {
     display: flex;
@@ -19,7 +22,18 @@
     justify-content: space-between;
     .left-container {
       width: 240px;
-
+      .wgt-placeholder {
+        width: 360px;
+        height: 100px;
+        line-height: 100px;
+        background: #b2cefd;
+        text-align: center;
+        color: #666;
+        display: none;
+        .placeholder-txt {
+          font-size: 13px;
+        }
+      }
       &-box {
         display: flex;
         &-item {
@@ -111,15 +125,22 @@
     .center-container {
       background: #f7f8fa;
       flex: 1;
-      display: flex;
-      justify-content: center;
-      padding-top: 24px;
+      overflow: auto;
+      position: absolute;
+      top: 60px;
+      left: 240px;
+      right: 390px;
+      bottom: 0;
       &-box {
         width: 360px;
         background: #fff;
-        height: 100%;
+        min-height: 100%;
+        margin: 20px auto;
+        box-shadow: 0 0 14px 0 rgb(0 0 0 / 10%);
+
         &-item {
           position: relative;
+          padding: 0 12px;
           &:hover {
             &:before {
               border: 1px dashed #155bd4;
@@ -134,12 +155,44 @@
               cursor: move;
             }
           }
+          &.active:before {
+            border: 1px solid #155bd4;
+            content: '';
+            position: absolute;
+            width: 360px;
+            height: 100%;
+            left: 0px;
+            top: 0;
+            box-sizing: border-box;
+            z-index: 99;
+            cursor: move;
+          }
+        }
+
+        .left-container-box-item.sortable-ghost {
+          width: 360px;
+          background: #b2cefd;
+          .item-icon,
+          .item-name {
+            display: none;
+          }
+          .wgt-placeholder {
+            display: block;
+            color: #666;
+          }
         }
       }
     }
 
     .right-container {
       width: 390px;
+      padding: 16px;
+      box-sizing: border-box;
+      &-title {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
     }
   }
 }

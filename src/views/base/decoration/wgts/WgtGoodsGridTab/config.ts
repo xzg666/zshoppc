@@ -1,17 +1,48 @@
 import WgtText from './index.vue'
+import goodsAttr from './goods-attr.vue'
+import { defineAsyncComponent, defineComponent } from 'vue'
 
 export default {
-    name: 'WgtText',
-    wgtName: '标题',
-    wgtIcon: 'wgt-slider',
+    name: 'WgtGoodsGridTab',
+    wgtName: '商品Tab',
+    wgtIcon: 'wgt-store',
     setting: [
         { label: '标题', key: 'title', component: 'input', value: '分享拼单' },
         { label: '标题', key: 'titleColor', component: 'color', value: '#000' },
         { label: '副标题', key: 'subtitle', component: 'input', value: '分享有好礼，拼单更便宜' },
         { label: '副标题', key: 'subtitleColor', component: 'color', value: '#666' },
-        { label: '内容', key: 'content', component: 'textarea', value: '双十一大促大洼大洼打回我电话白尾海雕过哈给我很多' },
-        { label: '颜色', key: 'contentColor', component: 'color', value: '#000' },
-        { label: '组件间距', key: 'space', component: 'switch', value: false }
+        { label: '组件间距', key: 'space', component: 'switch', value: false },
+        {
+            label: '商品', key: 'goods', component: defineAsyncComponent(() => import('./goods-attr.vue')), value: [
+                {
+                    img: '',
+                    linkPage: '',
+                    content: '',
+                    title: '商品名称',
+                    id: '',
+                    price: 0,
+                    market_price: 0
+                },
+                {
+                    img: '',
+                    linkPage: '',
+                    content: '',
+                    title: '商品名称',
+                    id: '',
+                    price: 0,
+                    market_price: 0
+                },
+                {
+                    img: '',
+                    linkPage: '',
+                    content: '',
+                    title: '商品名称',
+                    id: '',
+                    price: 0,
+                    market_price: 0
+                },
+            ]
+        },
     ],
     component: WgtText,
     transformIn: (v) => {

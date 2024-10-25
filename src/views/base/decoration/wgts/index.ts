@@ -1,9 +1,9 @@
 import WgtText from './wgtText/config'
-import WgtContent from './wgtContent/config'
+import WgtGoodsGridTab from './WgtGoodsGridTab/config'
 
 let SCENE_1001 = {
     WgtText,
-    WgtContent
+    WgtGoodsGridTab
 }
 
 export default {

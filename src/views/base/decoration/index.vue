@@ -23,14 +23,16 @@
           animation="500"
           :clone="cloneDefaultField"
         >
-          <template #item="{ element }">
+          <template #item="{ element, index }">
             <div class="left-container-box-item">
               <div :class="['item-icon', element.wgtIcon]" />
               <div class="item-name">{{ element.wgtName }}</div>
+              <div class="wgt-placeholder">
+                <div class="placholder-txt">放置区域</div>
+              </div>
             </div>
           </template>
         </draggable>
-        {{ contentComps }}
       </div>
       <div class="center-container">
         <draggable
@@ -38,14 +40,28 @@
           group="easyview"
           class="center-container-box"
         >
-          <template #item="{ element }">
-            <div class="center-container-box-item">
+          <template #item="{ element, index }">
+            <div
+              :class="[
+                'center-container-box-item',
+                { active: activeCompIndex == index }
+              ]"
+              @click="handleComClick(index)"
+            >
               <component :is="element.name" :value="element" />
             </div>
           </template>
         </draggable>
       </div>
-      <div class="right-container"></div>
+      <div class="right-container">
+        <div class="right-container-title">
+          {{ getComponentAttr(contentComps[activeCompIndex])?.wgtName }}
+        </div>
+        <AttrPanel
+          v-model="contentComps[activeCompIndex]"
+          :info="getComponentAttr(contentComps[activeCompIndex])"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -55,6 +71,7 @@ import { ref } from 'vue'
 import draggable from 'vuedraggable'
 import gWgts from './wgts'
 import app from '@/main.ts'
+import AttrPanel from './attr_panel.vue'
 
 const localScene = ref('1001')
 
@@ -84,5 +101,22 @@ const cloneDefaultField = (e) => {
   })
   console.log('compData', e, compData)
   return compData
+}
+
+const activeCompIndex = ref<any>(null)
+
+const handleComClick = (idx) => {
+  activeCompIndex.value = idx
+}
+
+const getComponentAttr = (item) => {
+  const { wgtName, setting } =
+    widgets?.value.find((wgt) => {
+      return wgt?.name?.toLowerCase() == item?.name?.toLowerCase()
+    }) ?? {}
+  return {
+    wgtName,
+    setting
+  }
 }
 </script>
