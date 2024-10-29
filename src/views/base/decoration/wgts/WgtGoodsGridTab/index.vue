@@ -11,13 +11,31 @@
     </div>
 
     <div class="good-content">
-      <div v-for="(item, idx) in value.goods" :key="idx">
-        <el-image :src="item.img" mode="scaleToFill" />
-        <div>
-          <div>{{ item.title }}</div>
-          <div>
-            <div>{{ item.price }}</div>
-            <div>{{ item.market_price }}</div>
+      <div class="good-content-lg">
+        <div v-for="(item, idx) in leftGoods" :key="idx" class="content-item">
+          <ZzImage :src="item.img" class="content-item-img" />
+          <div class="content-item-content">
+            <div class="content-item-content-item">{{ item.name }}</div>
+            <div class="content-item-content-price" v-if="item.price">
+              ¥{{ (item.price / 100).toFixed(2) }}
+            </div>
+            <div class="content-item-content-mprice" v-if="item.market_price">
+              ¥{{ (item.market_price / 100).toFixed(2) }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="good-content-rg">
+        <div v-for="(item, idx) in rightGoods" :key="idx" class="content-item">
+          <ZzImage :src="item.img" class="content-item-img" />
+          <div class="content-item-content">
+            <div class="content-item-content-item">{{ item.name }}</div>
+            <div class="content-item-content-price" v-if="item.price">
+              ¥{{ (item.price / 100).toFixed(2) }}
+            </div>
+            <div class="content-item-content-mprice" v-if="item.market_price">
+              ¥{{ (item.market_price / 100).toFixed(2) }}
+            </div>
           </div>
         </div>
       </div>
@@ -26,10 +44,20 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import ZzImage from '@/components/zz-image'
+
 const props = defineProps({
   value: {
     type: Object,
     required: true
   }
+})
+
+const leftGoods = computed(() => {
+  return props.value.goods.filter((item, idx) => idx % 2 == 0)
+})
+const rightGoods = computed(() => {
+  return props.value.goods.filter((item, idx) => idx % 2 == 1)
 })
 </script>

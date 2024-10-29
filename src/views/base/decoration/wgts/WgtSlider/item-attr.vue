@@ -1,15 +1,15 @@
-<style lang="less" scoped src="./index.less"></style>
+<style lang="less" scoped>
+.goods-attr {
+  width: 100%;
+}
+</style>
 <template>
   <div class="goods-attr">
     {{ modelValue }}
-    <CommonButton
-      placeholder="选择商品"
-      format="{0}件商品"
-      :value="goodsCount"
-      @click="handleClick"
-      @clear="handleClear"
-      @review="handelReview"
-    />
+    <div v-for="(item, idx) in modelValue" :key="idx">
+      <el-input v-model="item.img" style="max-width: 220px" />
+    </div>
+    <el-button @click="handleAdd" type="text">增加</el-button>
   </div>
 </template>
 
@@ -22,7 +22,6 @@ import {
   defineEmits
 } from 'vue'
 import CommonButton from '../../coms/commonButton.vue'
-
 const props = defineProps({
   modelValue: {
     type: Array,
@@ -30,14 +29,14 @@ const props = defineProps({
   }
 })
 
-const goodsCount = computed(() => {
-  return props.modelValue.filter((item) => !!item.id).length
-})
+const emit = defineEmits(['update:modelValue'])
+
+const handleAdd = () => {
+  emit('update:modelValue', [...props.modelValue, [{ img: '' }]])
+}
 
 const instance = getCurrentInstance()
 const picker = instance?.proxy?.$picker
-
-const emit = defineEmits(['update:modelValue'])
 
 const handleClick = async () => {
   const res = await picker.goods({

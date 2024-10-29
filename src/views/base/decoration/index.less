@@ -140,7 +140,7 @@
 
         &-item {
           position: relative;
-          padding: 0 12px;
+          // padding: 0 12px;
           &:hover {
             &:before {
               border: 1px dashed #155bd4;
@@ -166,6 +166,42 @@
             box-sizing: border-box;
             z-index: 99;
             cursor: move;
+          }
+          .wgt-tools {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            &-title {
+              position: absolute;
+              left: -90px;
+              font-size: 13px;
+              color: #666;
+              background: #fff;
+              padding: 6px;
+              border-radius: 5px;
+              width: 70px;
+              text-align: center;
+              &::after {
+                content: '';
+                width: 0;
+                height: 0;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-left: 10px solid #fff;
+                position: absolute;
+                right: -5px;
+              }
+            }
+            &-func {
+              position: absolute;
+              right: -20px;
+              top: 6px;
+              display: flex;
+              flex-direction: column;
+              .el-icon {
+                margin-bottom: 6px;
+              }
+            }
           }
         }
 

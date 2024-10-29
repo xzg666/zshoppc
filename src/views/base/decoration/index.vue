@@ -48,6 +48,27 @@
               ]"
               @click="handleComClick(index)"
             >
+              <div class="wgt-tools" v-if="activeCompIndex == index">
+                <div class="wgt-tools-title">
+                  {{ getComponentAttr(contentComps[activeCompIndex])?.wgtName }}
+                </div>
+                <div class="wgt-tools-func">
+                  <el-icon
+                    :size="16"
+                    color="#7D7D7D"
+                    @click="handleWgtDelete(index)"
+                  >
+                    <DeleteFilled />
+                  </el-icon>
+                  <el-icon
+                    :size="16"
+                    color="#7D7D7D"
+                    @click="handleWgtCopy(index)"
+                  >
+                    <DocumentCopy />
+                  </el-icon>
+                </div>
+              </div>
               <component :is="element.name" :value="element" />
             </div>
           </template>
@@ -118,5 +139,13 @@ const getComponentAttr = (item) => {
     wgtName,
     setting
   }
+}
+
+const handleWgtDelete = (idx) => {
+  contentComps.value.splice(idx, 1)
+}
+
+const handleWgtCopy = (idx) => {
+  contentComps.value.splice(idx, 0, contentComps.value[idx])
 }
 </script>

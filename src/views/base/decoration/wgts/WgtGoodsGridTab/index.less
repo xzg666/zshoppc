@@ -1,13 +1,46 @@
 .wgt-good {
   &.space {
-    padding: 12px 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
   .good-head {
     display: flex;
     align-items: end;
+    padding: 0 12px;
     &-subtitle {
       font-size: 12px;
       margin-left: 6px;
+    }
+  }
+  .good-content {
+    display: flex;
+    margin-top: 12px;
+    &-lg {
+      width: 50%;
+      padding-left: 12px;
+      padding-right: 6px;
+    }
+    &-rg {
+      width: 50%;
+      padding-left: 6px;
+      padding-right: 12px;
+    }
+    .content-item {
+      width: 100%;
+      margin-bottom: 12px;
+      &-img {
+        width: 100%;
+      }
+      &-content {
+        font-size: 14px;
+        &-price {
+          color: red;
+        }
+        &-mprice {
+          color: #999;
+          text-decoration: line-through;
+        }
+      }
     }
   }
 }

@@ -27,7 +27,7 @@
             </template>
           </template>
           <template v-else>
-            {{ modelValue[item.key] }}
+            <!-- {{ modelValue[item.key] }} -->
             <component :is="item.component" v-model="modelValue[item.key]" />
           </template>
         </div>
