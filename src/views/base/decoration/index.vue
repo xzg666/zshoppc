@@ -48,11 +48,11 @@
               ]"
               @click="handleComClick(index)"
             >
-              <div class="wgt-tools" v-if="activeCompIndex == index">
+              <div class="wgt-tools">
                 <div class="wgt-tools-title">
-                  {{ getComponentAttr(contentComps[activeCompIndex])?.wgtName }}
+                  {{ element.wgtName }}
                 </div>
-                <div class="wgt-tools-func">
+                <div class="wgt-tools-func" v-if="activeCompIndex == index">
                   <el-icon
                     :size="16"
                     color="#7D7D7D"
@@ -73,6 +73,7 @@
             </div>
           </template>
         </draggable>
+        <el-backtop target=".center-container" :right="420" />
       </div>
       <div class="right-container">
         <div class="right-container-title">
